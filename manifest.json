@@ -1,16 +1,16 @@
 {
   "name": "Five Records — Hollow Archive",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "manifest_version": 1,
   "description": "Shared two-phase Hollow Archive puzzle for Owlbear Rodeo.",
   "author": "Echoes of the Forgotten Age",
-  "icon": "./icon.svg",
+  "icon": "https://dimitrisroumantzas-glitch.github.io/five-records-owlbear/icon.svg",
   "action": {
     "title": "Five Records",
-    "icon": "./icon.svg",
-    "popover": "./index.html",
+    "icon": "https://dimitrisroumantzas-glitch.github.io/five-records-owlbear/icon.svg",
+    "popover": "https://dimitrisroumantzas-glitch.github.io/five-records-owlbear/index.html",
     "height": 720,
     "width": 760
   },
-  "background_url": "./background.html"
+  "background_url": "https://dimitrisroumantzas-glitch.github.io/five-records-owlbear/background.html"
 }
