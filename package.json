@@ -1,0 +1,8 @@
+{
+  "name": "five-records-owlbear-extension",
+  "private": true,
+  "version": "1.0.2",
+  "scripts": {
+    "serve": "npx serve -l 5173 ."
+  }
+}
