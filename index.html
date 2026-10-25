@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Five Records</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <main id="app" class="app-shell" aria-live="polite">
+    <header class="topbar">
+      <div>
+        <div class="eyebrow">HOLLOW ARCHIVE</div>
+        <h1>THE FIVE RECORDS</h1>
+      </div>
+      <div id="syncPill" class="sync-pill">Connecting…</div>
+    </header>
+
+    <section id="stage" class="stage phase-one">
+      <div class="stage-overlay"></div>
+      <div class="content">
+        <section class="instruction-panel">
+          <div id="phaseLabel" class="phase-label">PHASE ONE · PROVENANCE</div>
+          <p id="instructionText" class="instruction-text"></p>
+          <p id="subInstruction" class="sub-instruction"></p>
+        </section>
+
+        <section id="archiveMessage" class="archive-message hidden"></section>
+
+        <section id="cluesSection" class="clues-section">
+          <button id="toggleClues" class="ghost-button" type="button">Show clues</button>
+          <div id="clues" class="clues hidden"></div>
+        </section>
+
+        <section id="indexLegend" class="index-legend hidden" aria-label="Index reveal"></section>
+
+        <section class="slots-wrap">
+          <div id="slotLabels" class="slot-labels"></div>
+          <div id="slots" class="slots" aria-label="Puzzle slots"></div>
+        </section>
+
+        <section class="tray-wrap">
+          <div class="tray-label">RECORDS</div>
+          <div id="tray" class="tray" aria-label="Available Records"></div>
+        </section>
+
+        <div id="status" class="status" role="status"></div>
+        <div id="warning" class="warning hidden"></div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div id="gmControls" class="gm-controls hidden">
+        <span class="gm-tag">GM</span>
+        <button id="resetBtn" type="button">Reset</button>
+        <button id="phase2Btn" type="button">Reveal Phase 2</button>
+        <button id="openBtn" type="button">Open Archive</button>
+      </div>
+      <div id="demoNote" class="demo-note hidden">Standalone demo mode · Owlbear sync disabled</div>
+    </footer>
+  </main>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
