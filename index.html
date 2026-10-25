@@ -3,61 +3,68 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Five Records</title>
+  <title>Hollow Archive — The Five Records</title>
   <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
-  <main id="app" class="app-shell" aria-live="polite">
-    <header class="topbar">
-      <div>
-        <div class="eyebrow">HOLLOW ARCHIVE</div>
+  <main id="app" class="app-shell">
+    <section id="scene" class="scene phase-1">
+      <div class="vignette"></div>
+
+      <header class="title-panel">
+        <span class="kicker">HOLLOW ARCHIVE</span>
         <h1>THE FIVE RECORDS</h1>
-      </div>
-      <div id="syncPill" class="sync-pill">Connecting…</div>
-    </header>
+        <p id="phaseCopy">Τοποθετήστε τα Records στην αληθινή τους σειρά.</p>
+      </header>
 
-    <section id="stage" class="stage phase-one">
-      <div class="stage-overlay"></div>
-      <div class="content">
-        <section class="instruction-panel">
-          <div id="phaseLabel" class="phase-label">PHASE ONE · PROVENANCE</div>
-          <p id="instructionText" class="instruction-text"></p>
-          <p id="subInstruction" class="sub-instruction"></p>
-        </section>
+      <aside class="clue-panel">
+        <div class="panel-title">Στοιχεία</div>
+        <ol id="clueList">
+          <li>The Flame is the final witness.</li>
+          <li>The Seal stands immediately before the Eye.</li>
+          <li>Exactly one Record lies between the Key and the Seal.</li>
+          <li>The first demand of the Archive is access, not testimony.</li>
+          <li>The Quill never touches the Flame.</li>
+        </ol>
+        <div id="hintBox" class="hint-box hidden"></div>
+      </aside>
 
-        <section id="archiveMessage" class="archive-message hidden"></section>
+      <section id="puzzleBoard" class="puzzle-board" aria-label="Five Records altar">
+        <div class="altar-glow"></div>
+        <div id="slotLabels" class="slot-labels"></div>
+        <div id="slots" class="slots"></div>
+      </section>
 
-        <section id="cluesSection" class="clues-section">
-          <button id="toggleClues" class="ghost-button" type="button">Show clues</button>
-          <div id="clues" class="clues hidden"></div>
-        </section>
+      <section id="activationPanel" class="activation-panel hidden">
+        <div class="activation-title">OPEN · WITNESS · PRESERVE</div>
+        <div class="activation-sub">Ενεργοποίησε τα σωστά sigils με τη σωστή σειρά.</div>
+        <div id="activationTrack" class="activation-track"></div>
+      </section>
 
-        <section id="indexLegend" class="index-legend hidden" aria-label="Index reveal"></section>
+      <section id="tray" class="record-tray" aria-label="Available records"></section>
 
-        <section class="slots-wrap">
-          <div id="slotLabels" class="slot-labels"></div>
-          <div id="slots" class="slots" aria-label="Puzzle slots"></div>
-        </section>
+      <div id="status" class="status"></div>
+      <div id="warning" class="archive-warning hidden">THE ARCHIVE HAS REGISTERED YOUR PRESENCE.</div>
 
-        <section class="tray-wrap">
-          <div class="tray-label">RECORDS</div>
-          <div id="tray" class="tray" aria-label="Available Records"></div>
-        </section>
+      <section id="opened" class="opened hidden">
+        <div class="opened-card">
+          <div class="opened-kicker">ACCESS GRANTED</div>
+          <h2>HOLLOW ARCHIVE</h2>
+          <p>What was forgotten was not lost.</p>
+        </div>
+      </section>
 
-        <div id="status" class="status" role="status"></div>
-        <div id="warning" class="warning hidden"></div>
-      </div>
+      <footer class="footer-bar">
+        <div id="syncPill" class="sync-pill">Connecting…</div>
+        <div id="gmControls" class="gm-controls hidden">
+          <span class="gm-label">GM</span>
+          <button id="hintBtn" type="button">Hint</button>
+          <button id="solve1Btn" type="button">Solve Phase 1</button>
+          <button id="openBtn" type="button">Open Archive</button>
+          <button id="resetBtn" type="button">Reset</button>
+        </div>
+      </footer>
     </section>
-
-    <footer class="footer">
-      <div id="gmControls" class="gm-controls hidden">
-        <span class="gm-tag">GM</span>
-        <button id="resetBtn" type="button">Reset</button>
-        <button id="phase2Btn" type="button">Reveal Phase 2</button>
-        <button id="openBtn" type="button">Open Archive</button>
-      </div>
-      <div id="demoNote" class="demo-note hidden">Standalone demo mode · Owlbear sync disabled</div>
-    </footer>
   </main>
   <script type="module" src="./app.js"></script>
 </body>
