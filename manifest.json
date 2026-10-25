@@ -1,0 +1,16 @@
+{
+  "name": "Five Records — Hollow Archive",
+  "version": "1.0.2",
+  "manifest_version": 1,
+  "description": "Shared two-phase Hollow Archive puzzle for Owlbear Rodeo.",
+  "author": "Echoes of the Forgotten Age",
+  "icon": "./icon.svg",
+  "action": {
+    "title": "Five Records",
+    "icon": "./icon.svg",
+    "popover": "./index.html",
+    "height": 720,
+    "width": 760
+  },
+  "background_url": "./background.html"
+}
