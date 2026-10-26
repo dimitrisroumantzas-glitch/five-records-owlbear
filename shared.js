@@ -8,7 +8,7 @@ export const INITIAL_TRAY = ["SEAL", "FLAME", "KEY", "EYE", "QUILL"];
 
 export function freshState() {
   return {
-    version: 2,
+    version: 3,
     phase: 1,
     slots: [null, null, null, null, null],
     activation: [],
@@ -33,7 +33,7 @@ export function sanitizeState(value) {
     : [];
   if (new Set(unique).size !== unique.length) return base;
   return {
-    version: 2,
+    version: 3,
     phase,
     slots,
     activation,
