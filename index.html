@@ -4,66 +4,70 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hollow Archive — The Five Records</title>
+  <link rel="stylesheet" href="./puzzle-image.css" />
+  <link rel="stylesheet" href="./reveal-image.css" />
+  <link rel="stylesheet" href="./records-images.css" />
   <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
   <main id="app" class="app-shell">
     <section id="scene" class="scene phase-1">
-      <div class="vignette"></div>
+      <div class="scene-canvas">
+        <div class="ambient-vignette"></div>
 
-      <header class="title-panel">
-        <span class="kicker">HOLLOW ARCHIVE</span>
-        <h1>THE FIVE RECORDS</h1>
-        <p id="phaseCopy">Τοποθετήστε τα Records στην αληθινή τους σειρά.</p>
-      </header>
-
-      <aside class="clue-panel">
-        <div class="panel-title">Στοιχεία</div>
-        <ol id="clueList">
-          <li>The Flame is the final witness.</li>
-          <li>The Seal stands immediately before the Eye.</li>
-          <li>Exactly one Record lies between the Key and the Seal.</li>
-          <li>The first demand of the Archive is access, not testimony.</li>
-          <li>The Quill never touches the Flame.</li>
-        </ol>
-        <div id="hintBox" class="hint-box hidden"></div>
-      </aside>
-
-      <section id="puzzleBoard" class="puzzle-board" aria-label="Five Records altar">
-        <div class="altar-glow"></div>
-        <div id="slotLabels" class="slot-labels"></div>
-        <div id="slots" class="slots"></div>
-      </section>
-
-      <section id="activationPanel" class="activation-panel hidden">
-        <div class="activation-title">OPEN · WITNESS · PRESERVE</div>
-        <div class="activation-sub">Ενεργοποίησε τα σωστά sigils με τη σωστή σειρά.</div>
-        <div id="activationTrack" class="activation-track"></div>
-      </section>
-
-      <section id="tray" class="record-tray" aria-label="Available records"></section>
-
-      <div id="status" class="status"></div>
-      <div id="warning" class="archive-warning hidden">THE ARCHIVE HAS REGISTERED YOUR PRESENCE.</div>
-
-      <section id="opened" class="opened hidden">
-        <div class="opened-card">
-          <div class="opened-kicker">ACCESS GRANTED</div>
-          <h2>HOLLOW ARCHIVE</h2>
-          <p>What was forgotten was not lost.</p>
+        <div class="scene-title">
+          <span>HOLLOW ARCHIVE</span>
+          <strong>THE FIVE RECORDS</strong>
         </div>
-      </section>
 
-      <footer class="footer-bar">
+        <button id="fullscreenBtn" class="icon-button fullscreen-button" type="button" aria-label="Full screen" title="Full screen">⛶</button>
+
+        <section id="inscription" class="inscription" aria-live="polite">
+          <div id="phaseHeading" class="phase-heading">PROVENANCE</div>
+          <div id="clueGrid" class="clue-grid">
+            <div><b>I</b><span>The Flame is the final witness.</span></div>
+            <div><b>II</b><span>The Seal stands immediately before the Eye.</span></div>
+            <div><b>III</b><span>Exactly one Record lies between the Key and the Seal.</span></div>
+            <div><b>IV</b><span>The first demand of the Archive is access, not testimony.</span></div>
+            <div><b>V</b><span>The Quill never touches the Flame.</span></div>
+          </div>
+          <div id="phase2Inscription" class="phase2-inscription hidden">
+            <div class="ritual-words">OPEN · WITNESS · PRESERVE</div>
+            <div class="ritual-sub">Activate the sigils in the order demanded by the Archive.</div>
+          </div>
+          <div id="hintLine" class="hint-line hidden"></div>
+        </section>
+
+        <section id="activationSockets" class="activation-sockets hidden" aria-label="Archive activation sigils"></section>
+
+        <section id="puzzleBoard" class="puzzle-board" aria-label="Five stone record pedestals">
+          <div id="slots" class="slots"></div>
+        </section>
+
+        <section id="recordTray" class="record-tray" aria-label="Available Records"></section>
+
+        <div id="status" class="status" role="status"></div>
+        <div id="warning" class="warning hidden">THE ARCHIVE HAS REGISTERED YOUR PRESENCE.</div>
+
         <div id="syncPill" class="sync-pill">Connecting…</div>
-        <div id="gmControls" class="gm-controls hidden">
-          <span class="gm-label">GM</span>
-          <button id="hintBtn" type="button">Hint</button>
+
+        <button id="gmToggle" class="icon-button gm-toggle hidden" type="button" aria-label="GM controls" title="GM controls">⚙</button>
+        <aside id="gmDrawer" class="gm-drawer hidden">
+          <div class="gm-drawer-title">GM CONTROLS</div>
+          <button id="hintBtn" type="button">Reveal Hint</button>
           <button id="solve1Btn" type="button">Solve Phase 1</button>
           <button id="openBtn" type="button">Open Archive</button>
-          <button id="resetBtn" type="button">Reset</button>
-        </div>
-      </footer>
+          <button id="resetBtn" class="danger" type="button">Reset Puzzle</button>
+        </aside>
+
+        <section id="opened" class="opened hidden">
+          <div class="opened-text">
+            <span>ACCESS GRANTED</span>
+            <strong>HOLLOW ARCHIVE</strong>
+            <em>What was forgotten was not lost.</em>
+          </div>
+        </section>
+      </div>
     </section>
   </main>
   <script type="module" src="./app.js"></script>
