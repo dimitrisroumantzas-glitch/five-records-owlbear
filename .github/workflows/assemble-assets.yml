@@ -1,0 +1,27 @@
+name: Assemble extension assets
+on:
+  push:
+    paths:
+      - "tmp/READY"
+permissions:
+  contents: write
+jobs:
+  assemble:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Assemble AVIF assets
+        run: |
+          mkdir -p assets
+          cat tmp/altar.*.b64 | tr -d '\n\r' | base64 -d > assets/altar.avif
+          cat tmp/archive.*.b64 | tr -d '\n\r' | base64 -d > assets/archive-open.avif
+          test -s assets/altar.avif
+          test -s assets/archive-open.avif
+          rm -rf tmp
+      - name: Commit generated assets
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/altar.avif assets/archive-open.avif tmp
+          git commit -m "v4: assemble Hollow Archive artwork"
+          git push
