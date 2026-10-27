@@ -4,65 +4,72 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hollow Archive — The Five Records</title>
-  <link rel="stylesheet" href="./puzzle-image.css" />
-  <link rel="stylesheet" href="./reveal-image.css" />
-  <link rel="stylesheet" href="./records-images.css" />
   <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
-  <main id="app" class="app-shell">
+  <main class="app-shell">
     <section id="scene" class="scene phase-1">
       <div class="scene-canvas">
-        <div class="ambient-vignette"></div>
+        <div class="stone-bg" aria-hidden="true"></div>
+        <div class="light-beam" aria-hidden="true"></div>
+        <div id="whiteFlash" class="white-flash" aria-hidden="true"></div>
+        <div class="vignette" aria-hidden="true"></div>
 
-        <div class="scene-title">
+        <header class="scene-title">
           <span>HOLLOW ARCHIVE</span>
           <strong>THE FIVE RECORDS</strong>
-        </div>
+        </header>
 
         <button id="fullscreenBtn" class="icon-button fullscreen-button" type="button" aria-label="Full screen" title="Full screen">⛶</button>
 
-        <section id="inscription" class="inscription" aria-live="polite">
+        <section class="archive-panel">
           <div id="phaseHeading" class="phase-heading">PROVENANCE</div>
           <div id="clueGrid" class="clue-grid">
-            <div><b>I</b><span>The Flame is the final witness.</span></div>
-            <div><b>II</b><span>The Seal stands immediately before the Eye.</span></div>
-            <div><b>III</b><span>Exactly one Record lies between the Key and the Seal.</span></div>
-            <div><b>IV</b><span>The first demand of the Archive is access, not testimony.</span></div>
-            <div><b>V</b><span>The Quill never touches the Flame.</span></div>
+            <div><b>KEY</b><span>I stood before the Quill.</span></div>
+            <div><b>QUILL</b><span>The Seal followed immediately after me.</span></div>
+            <div><b>SEAL</b><span>I stood before the Eye.</span></div>
+            <div><b>EYE</b><span>My place was neither first nor last.</span></div>
+            <div><b>FLAME</b><span>Exactly one place stood between the Seal and me, and I stood after the Eye.</span></div>
           </div>
-          <div id="phase2Inscription" class="phase2-inscription hidden">
-            <div class="ritual-words">OPEN · WITNESS · PRESERVE</div>
-            <div class="ritual-sub">Activate the sigils in the order demanded by the Archive.</div>
+
+          <div id="indexPanel" class="index-panel hidden">
+            <div class="index-title">THE INNER INDEX</div>
+            <div class="index-sub">The five Records answer with older marks.</div>
+            <div id="indexRow" class="index-row"></div>
           </div>
+
           <div id="hintLine" class="hint-line hidden"></div>
         </section>
 
-        <section id="activationSockets" class="activation-sockets hidden" aria-label="Archive activation sigils"></section>
+        <section id="activationSockets" class="activation-sockets hidden" aria-label="Archive activation glyphs"></section>
 
         <section id="puzzleBoard" class="puzzle-board" aria-label="Five stone record pedestals">
+          <div class="altar-rail"></div>
           <div id="slots" class="slots"></div>
         </section>
 
         <section id="recordTray" class="record-tray" aria-label="Available Records"></section>
 
         <div id="status" class="status" role="status"></div>
-        <div id="warning" class="warning hidden">THE ARCHIVE HAS REGISTERED YOUR PRESENCE.</div>
-
+        <div id="warning" class="warning hidden">THE HOLLOW ARCHIVE HAS REGISTERED YOUR PRESENCE.</div>
         <div id="syncPill" class="sync-pill">Connecting…</div>
 
         <button id="gmToggle" class="icon-button gm-toggle hidden" type="button" aria-label="GM controls" title="GM controls">⚙</button>
         <aside id="gmDrawer" class="gm-drawer hidden">
           <div class="gm-drawer-title">GM CONTROLS</div>
           <button id="hintBtn" type="button">Reveal Hint</button>
-          <button id="solve1Btn" type="button">Solve Phase 1</button>
+          <button id="solve1Btn" type="button">Reveal Inner Index</button>
           <button id="openBtn" type="button">Open Archive</button>
           <button id="resetBtn" class="danger" type="button">Reset Puzzle</button>
         </aside>
 
-        <section id="opened" class="opened hidden">
+        <section id="opened" class="opened hidden" aria-live="polite">
+          <div class="door-frame">
+            <div class="door-glow"></div>
+            <div class="door-slit"></div>
+          </div>
           <div class="opened-text">
-            <span>ACCESS GRANTED</span>
+            <span>THE OUTER SEAL RELEASES</span>
             <strong>HOLLOW ARCHIVE</strong>
             <em>What was forgotten was not lost.</em>
           </div>
