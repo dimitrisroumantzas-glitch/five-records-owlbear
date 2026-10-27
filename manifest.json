@@ -1,8 +1,8 @@
 {
   "name": "Hollow Archive — The Five Records",
-  "version": "4.0.0",
+  "version": "5.0.0",
   "manifest_version": 1,
-  "description": "Canonical synchronized Five Records puzzle for Echoes of the Forgotten Age.",
+  "description": "Image-based synchronized Five Records puzzle for Echoes of the Forgotten Age.",
   "author": "Echoes of the Forgotten Age",
   "icon": "https://dimitrisroumantzas-glitch.github.io/five-records-owlbear/icon.svg",
   "action": {

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+<defs><linearGradient id="b" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#170f0c"/><stop offset="1" stop-color="#050404"/></linearGradient><radialGradient id="g"><stop stop-color="#fff9e8" stop-opacity=".95"/><stop offset=".48" stop-color="#efcb86" stop-opacity=".72"/><stop offset="1" stop-color="#efcb86" stop-opacity="0"/></radialGradient><filter id="blur"><feGaussianBlur stdDeviation="18"/></filter></defs>
+<rect width="1600" height="900" fill="url(#b)"/><ellipse cx="800" cy="360" rx="390" ry="300" fill="url(#g)"/>
+<path d="M555 105h490l55 62v525H500V167z" fill="#211a16" stroke="#6b563c" stroke-width="18"/>
+<rect x="640" y="175" width="320" height="455" rx="8" fill="#fbf4df"/><rect x="640" y="175" width="320" height="455" rx="8" fill="#f0c87c" opacity=".42" filter="url(#blur)"/>
+<rect x="793" y="175" width="14" height="455" fill="#fff9e7" opacity=".92"/><rect x="0" y="650" width="1600" height="250" fill="#0c0908"/>
+<rect x="25" y="25" width="1550" height="850" fill="none" stroke="#000" stroke-width="50" opacity=".38"/></svg>
