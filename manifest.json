@@ -1,16 +1,1 @@
-{
-  "name": "Hollow Archive — The Five Records",
-  "version": "5.0.0",
-  "manifest_version": 1,
-  "description": "Image-based synchronized Five Records puzzle for Echoes of the Forgotten Age.",
-  "author": "Echoes of the Forgotten Age",
-  "icon": "https://dimitrisroumantzas-glitch.github.io/five-records-owlbear/icon.svg",
-  "action": {
-    "title": "Hollow Archive",
-    "icon": "https://dimitrisroumantzas-glitch.github.io/five-records-owlbear/icon.svg",
-    "popover": "https://dimitrisroumantzas-glitch.github.io/five-records-owlbear/index.html",
-    "height": 810,
-    "width": 1440
-  },
-  "background_url": "https://dimitrisroumantzas-glitch.github.io/five-records-owlbear/background.html"
-}
+{"name":"Hollow Archive — The Five Records","version":"6.0.0","manifest_version":1,"description":"Realistic D&D prop-based synchronized puzzle for Echoes of the Forgotten Age.","author":"Echoes of the Forgotten Age","icon":"https://dimitrisroumantzas-glitch.github.io/five-records-owlbear/icon.svg","action":{"title":"Hollow Archive","icon":"https://dimitrisroumantzas-glitch.github.io/five-records-owlbear/icon.svg","popover":"https://dimitrisroumantzas-glitch.github.io/five-records-owlbear/index.html","height":810,"width":1440},"background_url":"https://dimitrisroumantzas-glitch.github.io/five-records-owlbear/background.html"}
