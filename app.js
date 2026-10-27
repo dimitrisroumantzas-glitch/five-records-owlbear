@@ -1,7 +1,7 @@
 import OBR from "https://cdn.jsdelivr.net/npm/@owlbear-rodeo/sdk@3.1.0/+esm";
 import {
   CHANNEL, STATE_KEY, RECORDS, PHASE1_SOLUTION, PHASE2_SOLUTION,
-  INITIAL_TRAY, freshState, sanitizeState
+  INDEX, INITIAL_TRAY, freshState, sanitizeState
 } from "./shared.js";
 
 const $ = id => document.getElementById(id);
@@ -12,10 +12,11 @@ let demoMode = !OBR.isAvailable;
 let selected = null;
 let checking = false;
 let statusTimer = null;
+let flashTimer = null;
 
 const HINTS = [
-  "The first position answers to access. The Flame does not.",
-  "One Record stands between Key and Seal; Seal and Eye stand together."
+  "The Seal follows the Quill immediately, and the Eye is not at either edge.",
+  "The Key must precede the Quill. The Flame comes after the Eye with exactly one place between Flame and Seal."
 ];
 
 const SYMBOLS = {
@@ -37,14 +38,31 @@ function showStatus(text,kind="",duration=2600){
   if(duration>0) statusTimer=setTimeout(()=>el.classList.remove("show"),duration);
 }
 
-function recordButton(name){
+function flash(){
+  const el=$("whiteFlash");
+  el.classList.remove("active");
+  void el.offsetWidth;
+  el.classList.add("active");
+  clearTimeout(flashTimer);
+  flashTimer=setTimeout(()=>el.classList.remove("active"),900);
+}
+
+function recordCard(name, compact=false){
   const b=document.createElement("button");
   b.type="button";
-  b.className=`record-token ${selected===name?"selected":""}`;
+  b.className=`record-token ${compact?"compact":""} ${selected===name?"selected":""}`;
   b.dataset.record=name;
   b.draggable=state.phase===1;
   b.setAttribute("aria-label",`${name} Record`);
-  b.innerHTML=`<span class="record-art ${name.toLowerCase()}"></span><span class="record-name">${name}</span>`;
+  b.innerHTML=`
+    <span class="record-face">
+      <span class="record-corner tl"></span><span class="record-corner tr"></span>
+      <span class="record-corner bl"></span><span class="record-corner br"></span>
+      <span class="record-symbol">${SYMBOLS[name]}</span>
+      <span class="record-name">${name}</span>
+      ${state.phase>=2?`<span class="record-index">${INDEX[name]}</span>`:""}
+    </span>`;
+
   b.addEventListener("dragstart",e=>{
     if(state.phase!==1) return;
     e.dataTransfer.setData("text/plain",name);
@@ -93,7 +111,7 @@ function place(index,name){
   const displaced=slots[index];
   slots[index]=name;
   selected=displaced||null;
-  commit({...state,slots,updatedAt:Date.now()});
+  commit({...state,slots,event:null,updatedAt:Date.now()});
 }
 
 function remove(index){
@@ -101,7 +119,7 @@ function remove(index){
   const slots=[...state.slots];
   selected=slots[index];
   slots[index]=null;
-  commit({...state,slots,updatedAt:Date.now()});
+  commit({...state,slots,event:null,updatedAt:Date.now()});
 }
 
 function checkPhase1(){
@@ -109,40 +127,46 @@ function checkPhase1(){
   checking=true;
   setTimeout(async()=>{
     if(eq(state.slots,PHASE1_SOLUTION)){
-      showStatus("The stone answers. The five Records are accepted.","success",3200);
-      await commit({...state,phase:2,activation:[],updatedAt:Date.now()});
+      showStatus("The five Records settle into place. Older marks wake beneath the stone.","success",3600);
+      await commit({...state,phase:2,activation:[],event:"INDEX_REVEALED",updatedAt:Date.now()});
     }else{
-      showStatus("The altar rejects the provenance.","error",2400);
-      await commit({
-        ...state,
-        attempts1:state.attempts1+1,
-        slots:[null,null,null,null,null],
-        activation:[],
-        updatedAt:Date.now()
-      });
+      showStatus("The Archive rejects the provenance.","error",2400);
+      await commit({...state,attempts1:state.attempts1+1,slots:[null,null,null,null,null],activation:[],event:"PHASE1_REJECT",updatedAt:Date.now()});
     }
     checking=false;
   },520);
 }
 
 async function activate(name){
-  if(state.phase!==2 || checking) return;
+  if(state.phase!==2 || checking || state.activation.includes(name)) return;
   const activation=[...state.activation,name];
-  await commit({...state,activation,updatedAt:Date.now()});
-  if(activation.length<3) return;
+  await commit({...state,activation,event:null,updatedAt:Date.now()});
+  if(activation.length<5) return;
+
   checking=true;
   setTimeout(async()=>{
     if(eq(activation,PHASE2_SOLUTION)){
-      showStatus("The inner seal releases.","success",1800);
-      await commit({...state,phase:3,activation,updatedAt:Date.now()});
+      showStatus("Stone grinds against stone. The Outer Seal releases.","success",2600);
+      await commit({...state,phase:3,activation,event:"ARCHIVE_OPEN",updatedAt:Date.now()});
     }else{
       const attempts2=state.attempts2+1;
-      const archiveAlerted=state.archiveAlerted || attempts2>=3;
-      showStatus("A deep stone knock answers from inside the mountain.","error",2800);
-      await commit({...state,activation:[],attempts2,archiveAlerted,updatedAt:Date.now()});
+      let event="PHASE2_FAIL_1";
+      if(attempts2===2) event="PHASE2_FAIL_2";
+      if(attempts2>=3) event="PHASE2_FAIL_3";
+      await commit({
+        ...state,
+        activation:[],
+        attempts2,
+        archiveAlerted:state.archiveAlerted || attempts2>=3,
+        event,
+        updatedAt:Date.now()
+      });
+      if(attempts2===1) showStatus("The glyphs go dark. Nothing else answers.","error",2600);
+      if(attempts2===2) showStatus("A deep stone knock answers from somewhere beyond the wall.","error",3400);
+      if(attempts2>=3){ flash(); showStatus("White light floods the seal. Something inside now knows you are here.","error",4200); }
     }
     checking=false;
-  },520);
+  },650);
 }
 
 function renderSlots(){
@@ -152,23 +176,12 @@ function renderSlots(){
     const slot=document.createElement("div");
     slot.className=`record-slot ${name?"filled":""}`;
     slot.dataset.index=index;
-    slot.addEventListener("dragover",e=>{
-      if(state.phase!==1) return;
-      e.preventDefault();
-      slot.classList.add("over");
-    });
+    slot.innerHTML=`<span class="slot-number">${index+1}</span>`;
+    slot.addEventListener("dragover",e=>{ if(state.phase===1){ e.preventDefault(); slot.classList.add("over"); }});
     slot.addEventListener("dragleave",()=>slot.classList.remove("over"));
-    slot.addEventListener("drop",e=>{
-      e.preventDefault();
-      slot.classList.remove("over");
-      place(index,e.dataTransfer.getData("text/plain"));
-    });
-    slot.addEventListener("click",()=>{
-      if(state.phase!==1) return;
-      if(selected) place(index,selected);
-      else if(name) remove(index);
-    });
-    if(name) slot.append(recordButton(name));
+    slot.addEventListener("drop",e=>{ e.preventDefault(); slot.classList.remove("over"); place(index,e.dataTransfer.getData("text/plain")); });
+    slot.addEventListener("click",()=>{ if(state.phase===1){ if(selected) place(index,selected); else if(name) remove(index); }});
+    if(name) slot.append(recordCard(name,true));
     slotsEl.append(slot);
   });
 }
@@ -177,7 +190,18 @@ function renderTray(){
   const tray=$("recordTray");
   tray.innerHTML="";
   if(state.phase!==1) return;
-  for(const name of available()) tray.append(recordButton(name));
+  for(const name of available()) tray.append(recordCard(name));
+}
+
+function renderIndex(){
+  const row=$("indexRow");
+  row.innerHTML="";
+  for(const name of PHASE1_SOLUTION){
+    const item=document.createElement("div");
+    item.className="index-item";
+    item.innerHTML=`<span class="index-glyph">${SYMBOLS[name]}</span><b>${name}</b><strong>${INDEX[name]}</strong>`;
+    row.append(item);
+  }
 }
 
 function renderActivation(){
@@ -187,9 +211,10 @@ function renderActivation(){
   PHASE1_SOLUTION.forEach(name=>{
     const b=document.createElement("button");
     b.type="button";
-    b.className=`activation-socket ${state.activation.includes(name)?"lit":""}`;
+    const step=state.activation.indexOf(name);
+    b.className=`activation-socket ${step>=0?"lit":""}`;
     b.setAttribute("aria-label",`Activate ${name}`);
-    b.innerHTML=SYMBOLS[name];
+    b.innerHTML=`${SYMBOLS[name]}${step>=0?`<span>${step+1}</span>`:""}`;
     b.addEventListener("click",()=>activate(name));
     holder.append(b);
   });
@@ -197,11 +222,7 @@ function renderActivation(){
 
 function renderHint(){
   const el=$("hintLine");
-  if(state.hints<=0){
-    el.classList.add("hidden");
-    el.textContent="";
-    return;
-  }
+  if(state.hints<=0){ el.classList.add("hidden"); el.textContent=""; return; }
   el.textContent=HINTS[Math.min(state.hints,HINTS.length)-1];
   el.classList.remove("hidden");
 }
@@ -209,7 +230,7 @@ function renderHint(){
 function render(){
   scene.className=`scene phase-${state.phase}`;
   $("clueGrid").classList.toggle("hidden",state.phase!==1);
-  $("phase2Inscription").classList.toggle("hidden",state.phase!==2);
+  $("indexPanel").classList.toggle("hidden",state.phase!==2);
   $("activationSockets").classList.toggle("hidden",state.phase!==2);
   $("recordTray").classList.toggle("hidden",state.phase!==1);
   $("opened").classList.toggle("hidden",state.phase!==3);
@@ -219,19 +240,15 @@ function render(){
 
   renderSlots();
   renderTray();
+  renderIndex();
   renderActivation();
   renderHint();
 
-  if(state.phase===3){
-    $("gmDrawer").classList.add("hidden");
-    showStatus("", "", 1);
-  }
+  if(state.event==="PHASE2_FAIL_3") flash();
+  if(state.phase===3){ $("gmDrawer").classList.add("hidden"); showStatus("", "", 1); }
 }
 
-function toggleGmDrawer(){
-  if(!isGM&&!demoMode) return;
-  $("gmDrawer").classList.toggle("hidden");
-}
+function toggleGmDrawer(){ if(isGM||demoMode) $("gmDrawer").classList.toggle("hidden"); }
 
 async function sizeOwlbear(expanded=false){
   if(demoMode) return;
@@ -246,32 +263,10 @@ async function sizeOwlbear(expanded=false){
   }catch(err){ console.warn("Could not resize Owlbear popover",err); }
 }
 
-function updateFullscreenButton(){
-  const full=Boolean(document.fullscreenElement);
-  $("fullscreenBtn").textContent=full?"⛶":"⛶";
-  $("fullscreenBtn").title=full?"Exit full screen":"Full screen";
-  $("fullscreenBtn").setAttribute("aria-label",full?"Exit full screen":"Full screen");
-}
-
 async function toggleFullscreen(){
-  if(document.fullscreenElement){
-    try{ await document.exitFullscreen(); }catch{}
-    document.body.classList.remove("immersive");
-    await sizeOwlbear(false);
-    return;
-  }
-  try{
-    if(document.documentElement.requestFullscreen){
-      await document.documentElement.requestFullscreen({navigationUI:"hide"});
-      document.body.classList.add("immersive");
-      return;
-    }
-  }catch(err){
-    console.warn("Browser fullscreen unavailable inside Owlbear",err);
-  }
-  document.body.classList.add("immersive");
+  if(document.fullscreenElement){ try{ await document.exitFullscreen(); }catch{}; await sizeOwlbear(false); return; }
+  try{ if(document.documentElement.requestFullscreen){ await document.documentElement.requestFullscreen({navigationUI:"hide"}); return; } }catch{}
   await sizeOwlbear(true);
-  showStatus("Immersive view enabled.","success",1800);
 }
 
 async function initOwlbear(){
@@ -280,20 +275,14 @@ async function initOwlbear(){
   await sizeOwlbear(false);
   const metadata=await OBR.room.getMetadata();
   state=sanitizeState(metadata[STATE_KEY]);
+  if(isGM && metadata[STATE_KEY]?.version!==4) await OBR.room.setMetadata({[STATE_KEY]:state});
   $("syncPill").textContent=isGM?"Synced · GM":"Synced · Player";
+
   OBR.room.onMetadataChange(meta=>{
-    if(meta[STATE_KEY]){
-      state=sanitizeState(meta[STATE_KEY]);
-      selected=null;
-      render();
-    }
+    if(meta[STATE_KEY]){ state=sanitizeState(meta[STATE_KEY]); selected=null; render(); }
   });
   OBR.broadcast.onMessage(CHANNEL,event=>{
-    if(event.data?.type==="STATE_COMMIT"){
-      state=sanitizeState(event.data.state);
-      selected=null;
-      render();
-    }
+    if(event.data?.type==="STATE_COMMIT"){ state=sanitizeState(event.data.state); selected=null; render(); }
   });
   render();
 }
@@ -308,19 +297,10 @@ function initDemo(){
 
 $("fullscreenBtn").addEventListener("click",toggleFullscreen);
 $("gmToggle").addEventListener("click",toggleGmDrawer);
-$("resetBtn").addEventListener("click",()=>{
-  $("gmDrawer").classList.add("hidden");
-  commit(freshState());
-});
+$("resetBtn").addEventListener("click",()=>{ $("gmDrawer").classList.add("hidden"); selected=null; commit(freshState()); });
 $("hintBtn").addEventListener("click",()=>commit({...state,hints:Math.min(2,state.hints+1),updatedAt:Date.now()}));
-$("solve1Btn").addEventListener("click",()=>{
-  showStatus("GM override: provenance accepted.","success");
-  commit({...state,phase:2,slots:[...PHASE1_SOLUTION],activation:[],updatedAt:Date.now()});
-});
-$("openBtn").addEventListener("click",()=>commit({...state,phase:3,updatedAt:Date.now()}));
-document.addEventListener("fullscreenchange",updateFullscreenButton);
-document.addEventListener("keydown",e=>{
-  if(e.key==="Escape" && !$("gmDrawer").classList.contains("hidden")) $("gmDrawer").classList.add("hidden");
-});
+$("solve1Btn").addEventListener("click",()=>commit({...state,phase:2,slots:[...PHASE1_SOLUTION],activation:[],event:"INDEX_REVEALED",updatedAt:Date.now()}));
+$("openBtn").addEventListener("click",()=>commit({...state,phase:3,event:"ARCHIVE_OPEN",updatedAt:Date.now()}));
+document.addEventListener("keydown",e=>{ if(e.key==="Escape") $("gmDrawer").classList.add("hidden"); });
 
 if(demoMode) initDemo(); else initOwlbear();
