@@ -1,19 +1,41 @@
 <!doctype html><html lang="el"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Hollow Archive — Οι Πέντε Καταγραφές</title><link rel="stylesheet" href="./styles.css"></head><body>
 <main class="app-shell"><section id="scene" class="scene phase-1"><div class="scene-canvas"><div id="whiteFlash" class="white-flash"></div><div class="vignette"></div>
-<header class="scene-title"><span>HOLLOW ARCHIVE</span><strong>ΟΙ ΠΕΝΤΕ ΚΑΤΑΓΡΑΦΕΣ</strong></header><button id="fullscreenBtn" class="round fullscreen" title="Πλήρης οθόνη">⛶</button>
-<section id="inscription" class="stone-inscription">
-<div class="phase-heading">ΠΡΟΕΛΕΥΣΗ</div>
-<div id="clueGrid" class="clue-grid">
-<div><b>ΦΛΟΓΑ</b><span>Ανάμεσα στη Σφραγίδα και σε εμένα υπήρχε ακριβώς μία θέση, και στεκόμουν μετά από το Μάτι.</span></div>
-<div><b>ΣΦΡΑΓΙΔΑ</b><span>Στεκόμουν πριν από το Μάτι.</span></div>
-<div><b>ΚΛΕΙΔΙ</b><span>Στεκόμουν πριν από την Πένα.</span></div>
-<div><b>ΜΑΤΙ</b><span>Η θέση μου δεν ήταν ούτε η πρώτη ούτε η τελευταία.</span></div>
-<div><b>ΠΕΝΑ</b><span>Η Σφραγίδα με ακολουθούσε αμέσως.</span></div>
-</div><div id="hintLine" class="hint-line hidden"></div></section>
-<section id="revealText" class="reveal-text hidden"><div>ΟΙ ΠΕΤΡΕΣ ΑΠΟΚΡΙΝΟΝΤΑΙ</div><strong>Ο ΕΣΩΤΕΡΙΚΟΣ ΔΕΙΚΤΗΣ ΑΠΟΚΑΛΥΠΤΕΤΑΙ</strong></section>
-<section id="activationSockets" class="activation-sockets hidden"></section>
-<section id="puzzleBoard" class="puzzle-board"><div id="slots" class="slots"></div></section><section id="recordTray" class="record-tray"></section>
-<div id="status" class="status"></div><div id="warning" class="warning hidden">ΤΟ HOLLOW ARCHIVE ΚΑΤΕΓΡΑΨΕ ΤΗΝ ΠΑΡΟΥΣΙΑ ΣΑΣ.</div><div id="syncPill" class="sync-pill">Σύνδεση…</div>
-<button id="gmToggle" class="round gm hidden" title="Έλεγχοι GM">⚙</button><aside id="gmDrawer" class="gm-drawer hidden"><div class="gm-title">ΕΛΕΓΧΟΙ GM</div><button id="hintBtn">Εμφάνιση Υπόδειξης</button><button id="solve1Btn">Αποκάλυψη Εσωτερικού Δείκτη</button><button id="phase2Btn">Έναρξη Φάσης II</button><button id="openBtn">Άνοιγμα Hollow Archive</button><button id="resetBtn" class="danger">Επαναφορά Γρίφου</button></aside>
-<section id="opened" class="opened hidden"><div class="door-glow"></div><div class="opened-text"><span>Η ΕΞΩΤΕΡΙΚΗ ΣΦΡΑΓΙΔΑ ΥΠΟΧΩΡΕΙ</span><strong>HOLLOW ARCHIVE</strong><em>Ό,τι ξεχάστηκε, δεν χάθηκε.</em></div></section>
+<header class="scene-title"><span>HOLLOW ARCHIVE</span><strong>ΟΙ ΠΕΝΤΕ ΚΑΤΑΓΡΑΦΕΣ</strong></header>
+<button id="fullscreenBtn" class="round fullscreen" title="Πλήρης οθόνη">⛶</button>
+
+<section id="clueStones" class="clue-stones">
+  <article class="clue-stone flame"><div class="clue-name">ΦΛΟΓΑ</div><div class="clue-text">Ανάμεσα στη Σφραγίδα και σε εμένα υπήρχε ακριβώς μία θέση, και στεκόμουν μετά από το Μάτι.</div></article>
+  <article class="clue-stone seal"><div class="clue-name">ΣΦΡΑΓΙΔΑ</div><div class="clue-text">Στεκόμουν πριν από το Μάτι.</div></article>
+  <article class="clue-stone key"><div class="clue-name">ΚΛΕΙΔΙ</div><div class="clue-text">Στεκόμουν πριν από την Πένα.</div></article>
+  <article class="clue-stone eye"><div class="clue-name">ΜΑΤΙ</div><div class="clue-text">Η θέση μου δεν ήταν ούτε η πρώτη ούτε η τελευταία.</div></article>
+  <article class="clue-stone quill"><div class="clue-name">ΠΕΝΑ</div><div class="clue-text">Η Σφραγίδα με ακολουθούσε αμέσως.</div></article>
+  <div id="hintLine" class="hint-line hidden"></div>
+</section>
+
+<section id="phase2Message" class="phase2-message hidden">
+  <div>Οι πέτρες κλειδώνουν.</div>
+  <strong>Οι αριθμοί χαράζονται πάνω τους.</strong>
+  <span>Πάτησέ τους στη σωστή σειρά.</span>
+</section>
+
+<section id="puzzleBoard" class="puzzle-board"><div id="slots" class="slots"></div></section>
+<section id="recordTray" class="record-tray"></section>
+
+<div id="status" class="status"></div>
+<div id="warning" class="warning hidden">ΤΟ HOLLOW ARCHIVE ΚΑΤΕΓΡΑΨΕ ΤΗΝ ΠΑΡΟΥΣΙΑ ΣΑΣ.</div>
+<div id="syncPill" class="sync-pill">Σύνδεση…</div>
+
+<button id="gmToggle" class="round gm hidden" title="Έλεγχοι GM">⚙</button>
+<aside id="gmDrawer" class="gm-drawer hidden">
+  <div class="gm-title">ΕΛΕΓΧΟΙ GM</div>
+  <button id="hintBtn">Εμφάνιση Υπόδειξης</button>
+  <button id="solve1Btn">Λύση 1ης Φάσης</button>
+  <button id="openBtn">Άνοιγμα Hollow Archive</button>
+  <button id="resetBtn" class="danger">Επαναφορά Γρίφου</button>
+</aside>
+
+<section id="opened" class="opened hidden">
+  <div class="door-glow"></div>
+  <div class="opened-text"><span>Η ΕΞΩΤΕΡΙΚΗ ΣΦΡΑΓΙΔΑ ΥΠΟΧΩΡΕΙ</span><strong>HOLLOW ARCHIVE</strong><em>Ό,τι ξεχάστηκε, δεν χάθηκε.</em></div>
+</section>
 </div></section></main><script type="module" src="./app.js"></script></body></html>
