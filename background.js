@@ -1,7 +1,3 @@
 import OBR from "https://cdn.jsdelivr.net/npm/@owlbear-rodeo/sdk@3.1.0/+esm";import{CHANNEL,STATE_KEY,freshState,sanitizeState}from"./shared.js";
-let revealTimer=null;
-OBR.onReady(async()=>{const role=await OBR.player.getRole();if(role!=="GM")return;const metadata=await OBR.room.getMetadata();let initial=sanitizeState(metadata[STATE_KEY]);if(!metadata[STATE_KEY]||metadata[STATE_KEY]?.version!==8)await OBR.room.setMetadata({[STATE_KEY]:initial});
-function schedule(state){clearTimeout(revealTimer);if(state.phase!==2)return;revealTimer=setTimeout(async()=>{const latest=await OBR.room.getMetadata();const current=sanitizeState(latest[STATE_KEY]);if(current.phase!==2)return;const next={...current,phase:3,activation:[],event:"PHASE2_BEGIN",updatedAt:Date.now()};await OBR.room.setMetadata({[STATE_KEY]:next});await OBR.broadcast.sendMessage(CHANNEL,{type:"STATE_COMMIT",state:next},{destination:"ALL"})},4800)}
-schedule(initial);
-OBR.room.onMetadataChange(meta=>{if(meta[STATE_KEY])schedule(sanitizeState(meta[STATE_KEY]))});
-OBR.broadcast.onMessage(CHANNEL,async event=>{const msg=event.data;if(!msg||msg.type!=="STATE_PROPOSE")return;const next=sanitizeState(msg.state);await OBR.room.setMetadata({[STATE_KEY]:next});await OBR.broadcast.sendMessage(CHANNEL,{type:"STATE_COMMIT",state:next},{destination:"ALL"});schedule(next)})});
+OBR.onReady(async()=>{const role=await OBR.player.getRole();if(role!=="GM")return;const metadata=await OBR.room.getMetadata();let initial=sanitizeState(metadata[STATE_KEY]);if(!metadata[STATE_KEY]||metadata[STATE_KEY]?.version!==9)await OBR.room.setMetadata({[STATE_KEY]:initial});
+OBR.broadcast.onMessage(CHANNEL,async event=>{const msg=event.data;if(!msg||msg.type!=="STATE_PROPOSE")return;const next=sanitizeState(msg.state);await OBR.room.setMetadata({[STATE_KEY]:next});await OBR.broadcast.sendMessage(CHANNEL,{type:"STATE_COMMIT",state:next},{destination:"ALL"})})});
