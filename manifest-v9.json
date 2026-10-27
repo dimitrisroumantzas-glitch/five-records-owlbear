@@ -1,0 +1,13 @@
+{
+  "name": "Hollow Archive",
+  "version": "9.0.2",
+  "manifest_version": 1,
+  "action": {
+    "title": "Hollow Archive",
+    "icon": "./icon.svg",
+    "popover": "./index.html",
+    "height": 720,
+    "width": 1200
+  },
+  "background_url": "./background.html"
+}
