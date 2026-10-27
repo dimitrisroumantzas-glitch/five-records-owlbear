@@ -1,13 +1,13 @@
 {
   "name": "Hollow Archive",
-  "version": "9.0.2",
+  "version": "9.0.3",
   "manifest_version": 1,
   "action": {
     "title": "Hollow Archive",
-    "icon": "./icon.svg",
-    "popover": "./index.html",
+    "icon": "https://dimitrisroumantzas-glitch.github.io/five-records-owlbear/icon.svg",
+    "popover": "https://dimitrisroumantzas-glitch.github.io/five-records-owlbear/index.html",
     "height": 720,
     "width": 1200
   },
-  "background_url": "./background.html"
+  "background_url": "https://dimitrisroumantzas-glitch.github.io/five-records-owlbear/background.html"
 }
