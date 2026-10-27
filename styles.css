@@ -3,12 +3,12 @@
 .round{position:absolute;width:clamp(40px,3vw,58px);aspect-ratio:1;border-radius:50%;border:1px solid rgba(235,190,95,.72);background:rgba(15,11,7,.78);color:#f2cc78;display:grid;place-items:center;cursor:pointer;z-index:20;box-shadow:0 5px 18px #000;font:700 clamp(19px,1.5vw,28px) system-ui,sans-serif}.fullscreen{right:1.4%;top:1.4%}.gm{right:1.4%;bottom:1.4%}
 
 /* Τα clues είναι χαραγμένα στην πραγματική επάνω πέτρινη πλάκα της εικόνας. */
-.stone-inscription{position:absolute;z-index:12;left:28.2%;top:2.8%;width:43.6%;height:20.8%;padding:1.1% 1.6% .7%;color:#3c332a;pointer-events:none;transform:perspective(900px) rotateX(.6deg)}
-.inscription-title{text-align:center;font-weight:900;letter-spacing:.19em;font-size:clamp(13px,.94vw,19px);margin-bottom:.5vw;color:#45392d;text-shadow:1px 1px 0 rgba(231,218,192,.34),-1px -1px 0 rgba(28,21,16,.35)}
-.inscription-grid{display:grid;grid-template-columns:1fr 1fr;column-gap:1.3vw;row-gap:.42vw;align-items:start}
-.inscription-grid p{margin:0;font-size:clamp(10px,.72vw,14.5px);line-height:1.13;font-weight:750;letter-spacing:.008em;text-shadow:1px 1px 0 rgba(225,211,184,.34),-1px -1px 0 rgba(23,18,14,.42);filter:contrast(1.08)}
-.inscription-grid p:first-child{grid-column:1/3;width:89%;justify-self:center;text-align:center}.inscription-grid b{font-weight:950;letter-spacing:.06em;color:#34291f}
-.hint-line{position:absolute;left:6%;right:6%;bottom:-.4vw;text-align:center;color:#5a3a22;text-shadow:1px 1px rgba(238,219,181,.26),-1px -1px rgba(27,18,12,.3);font-size:clamp(9px,.63vw,13px);font-weight:900;font-style:italic}
+.stone-inscription{position:absolute;z-index:12;left:28.6%;top:3.25%;width:42.8%;height:17.7%;padding:.55% 1.15% .35%;color:#ead7ad;pointer-events:none;transform:perspective(900px) rotateX(.4deg)}
+.inscription-title{text-align:center;font-weight:900;letter-spacing:.18em;font-size:clamp(10px,.67vw,14px);margin-bottom:.22vw;color:#f0d59c;text-shadow:0 1px 1px rgba(22,14,8,.95),0 0 2px rgba(22,14,8,.55);-webkit-text-stroke:.15px rgba(76,45,20,.7)}
+.inscription-grid{display:grid;grid-template-columns:1fr 1fr;column-gap:1.05vw;row-gap:.2vw;align-items:start}
+.inscription-grid p{margin:0;font-size:clamp(8px,.52vw,11.5px);line-height:1.07;font-weight:700;letter-spacing:.002em;color:#ecd9af;text-shadow:0 1px 1px rgba(20,13,8,.95),0 0 2px rgba(20,13,8,.55);-webkit-text-stroke:.12px rgba(86,48,21,.55)}
+.inscription-grid p:first-child{grid-column:1/3;width:96%;justify-self:center;text-align:center}.inscription-grid b{font-weight:950;letter-spacing:.05em;color:#ffd991;text-shadow:0 1px 1px rgba(24,14,7,.98),0 0 2px rgba(24,14,7,.65)}
+.hint-line{position:absolute;left:5%;right:5%;bottom:-.45vw;text-align:center;color:#f1d69f;text-shadow:0 1px 2px rgba(20,12,7,.95);font-size:clamp(8px,.54vw,11px);font-weight:850;font-style:italic}
 .phase-2 .stone-inscription{display:none}
 
 .puzzle-board{position:absolute;left:24%;top:38%;width:52%;height:20%;z-index:7}.slots{display:grid;grid-template-columns:repeat(5,1fr);gap:1.9%;width:100%;height:100%}.record-slot{position:relative;display:flex;align-items:center;justify-content:center;border-radius:.4vw;transition:.14s}.record-slot::before{content:"";position:absolute;inset:5%;border:2px dashed transparent;border-radius:.4vw}.record-slot.over::before{border-color:#ffe1a0;background:rgba(235,180,74,.11);box-shadow:0 0 1.2vw rgba(255,206,106,.5)}
