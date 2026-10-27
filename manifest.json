@@ -1,1 +1,16 @@
-{"name":"Hollow Archive — Οι Πέντε Καταγραφές","version":"9.0.0","manifest_version":1,"description":"Ρεαλιστικός γρίφος D&D στα ελληνικά. Οι αριθμοί εμφανίζονται πάνω στις ίδιες πέτρες και η τελική εικόνα εμφανίζεται μόνο μετά τη σωστή δεύτερη σειρά.","author":"Echoes of the Forgotten Age","icon":"https://dimitrisroumantzas-glitch.github.io/five-records-owlbear/icon.svg","action":{"title":"Hollow Archive","icon":"https://dimitrisroumantzas-glitch.github.io/five-records-owlbear/icon.svg","popover":"https://dimitrisroumantzas-glitch.github.io/five-records-owlbear/index.html","height":810,"width":1440},"background_url":"https://dimitrisroumantzas-glitch.github.io/five-records-owlbear/background.html"}
+{
+  "name":"Hollow Archive — Οι Πέντε Καταγραφές",
+  "version":"9.0.1",
+  "manifest_version":1,
+  "description":"Διαδραστικός γρίφος D&D για το Hollow Archive.",
+  "author":"Echoes of the Forgotten Age",
+  "icon":"https://dimitrisroumantzas-glitch.github.io/five-records-owlbear/icon.svg",
+  "action":{
+    "title":"Hollow Archive",
+    "icon":"https://dimitrisroumantzas-glitch.github.io/five-records-owlbear/icon.svg",
+    "popover":"https://dimitrisroumantzas-glitch.github.io/five-records-owlbear/index.html",
+    "height":810,
+    "width":1440
+  },
+  "background_url":"https://dimitrisroumantzas-glitch.github.io/five-records-owlbear/background.html"
+}
