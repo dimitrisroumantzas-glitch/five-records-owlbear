@@ -1,11 +1,11 @@
 # Hollow Archive — The Five Records
 
-Version 6 uses the approved realistic D&D artwork supplied for the Hollow Archive puzzle.
+v7.0.0
 
-Phase One: KEY → QUILL → SEAL → EYE → FLAME
+Flow:
+1. Phase I — Provenance: KEY → QUILL → SEAL → EYE → FLAME
+2. Inner Index reveal scene: KEY=IV, QUILL=II, SEAL=V, EYE=I, FLAME=III
+3. Phase II — activate EYE → QUILL → FLAME → KEY → SEAL
+4. Archive opens only after Phase II succeeds
 
-Index: KEY=IV, QUILL=II, SEAL=V, EYE=I, FLAME=III
-
-Phase Two: EYE → QUILL → FLAME → KEY → SEAL
-
-Manifest: https://dimitrisroumantzas-glitch.github.io/five-records-owlbear/manifest.json
+The fullscreen button uses Owlbear Rodeo's full-screen modal API.
