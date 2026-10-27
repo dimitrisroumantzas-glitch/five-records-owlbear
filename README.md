@@ -1,11 +1,13 @@
-# Hollow Archive — The Five Records
+# Hollow Archive — Οι Πέντε Καταγραφές
 
-v7.0.0
+v8.0.0
 
-Flow:
-1. Phase I — Provenance: KEY → QUILL → SEAL → EYE → FLAME
-2. Inner Index reveal scene: KEY=IV, QUILL=II, SEAL=V, EYE=I, FLAME=III
-3. Phase II — activate EYE → QUILL → FLAME → KEY → SEAL
-4. Archive opens only after Phase II succeeds
+- Όλο το player-facing κείμενο είναι στα ελληνικά.
+- Οι ενδείξεις της Φάσης I εμφανίζονται πάνω στην πραγματική πέτρινη επιγραφή της εικόνας, χωρίς ξένο UI panel.
+- Οι ενδείξεις εμφανίζονται ανακατεμένες και οι πέτρες ξεκινούν επίσης σε διαφορετική σειρά από τη λύση.
+- Μετά τη σωστή Φάση I, οι ρωμαϊκοί αριθμοί εμφανίζονται πάνω στις ίδιες τις πέτρες.
+- Η μετάβαση στη Φάση II γίνεται αυτόματα μετά από λίγα δευτερόλεπτα, χωρίς κουμπί.
+- Στη Φάση II οι ρωμαϊκοί αριθμοί εμφανίζονται πάνω στα αντίστοιχα stone pedestals της φωτογραφίας.
+- Fullscreen μέσω Owlbear full-screen modal.
 
-The fullscreen button uses Owlbear Rodeo's full-screen modal API.
+Λύσεις: Phase I KEY → QUILL → SEAL → EYE → FLAME. Phase II EYE → QUILL → FLAME → KEY → SEAL.
