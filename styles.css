@@ -7,11 +7,11 @@ button{font:inherit}
 .scene-canvas{
   position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
   width:min(100vw,177.68vh);aspect-ratio:1672/941;
-  background:url("./assets/phase1-final.webp?v=930") center/cover no-repeat;
+  background:url("./assets/phase1-final.webp?v=931") center/cover no-repeat;
   overflow:hidden;isolation:isolate;box-shadow:0 0 60px #000
 }
-.phase-2 .scene-canvas{background-image:url("./assets/phase2-index.webp?v=930")}
-.phase-3 .scene-canvas{background-image:url("./assets/phase2.webp?v=930")}
+.phase-2 .scene-canvas{background-image:url("./assets/phase2-index.webp?v=931")}
+.phase-3 .scene-canvas{background-image:url("./assets/phase2.webp?v=931")}
 
 .flash{position:absolute;inset:0;z-index:40;background:#fff;opacity:0;pointer-events:none}
 .flash.active{animation:flash .7s ease-out}
@@ -46,11 +46,11 @@ button{font:inherit}
 }
 .card:hover{transform:translateY(-2%) scale(1.02)}
 .card-face{position:absolute;inset:0;background-size:contain;background-position:center;background-repeat:no-repeat}
-.card[data-record="KEY"] .card-face{background-image:url("./assets/key.webp?v=930")}
-.card[data-record="QUILL"] .card-face{background-image:url("./assets/quill.webp?v=930")}
-.card[data-record="SEAL"] .card-face{background-image:url("./assets/seal.webp?v=930")}
-.card[data-record="EYE"] .card-face{background-image:url("./assets/eye.webp?v=930")}
-.card[data-record="FLAME"] .card-face{background-image:url("./assets/flame.webp?v=930")}
+.card[data-record="KEY"] .card-face{background-image:url("./assets/key.webp?v=931")}
+.card[data-record="QUILL"] .card-face{background-image:url("./assets/quill.webp?v=931")}
+.card[data-record="SEAL"] .card-face{background-image:url("./assets/seal.webp?v=931")}
+.card[data-record="EYE"] .card-face{background-image:url("./assets/eye.webp?v=931")}
+.card[data-record="FLAME"] .card-face{background-image:url("./assets/flame.webp?v=931")}
 
 .phase-2 .card{cursor:pointer}
 .phase-2 .card.chosen{
