@@ -1,0 +1,14 @@
+{
+  "name":"Hollow Archive",
+  "version":"9.2.4",
+  "manifest_version":1,
+  "description":"Διαδραστικός γρίφος για το Hollow Archive.",
+  "action":{
+    "title":"Hollow Archive",
+    "icon":"https://cdn.jsdelivr.net/gh/dimitrisroumantzas-glitch/five-records-owlbear@main/icon.svg",
+    "popover":"https://cdn.jsdelivr.net/gh/dimitrisroumantzas-glitch/five-records-owlbear@main/index-v923.html",
+    "height":720,
+    "width":1200
+  },
+  "background_url":"https://cdn.jsdelivr.net/gh/dimitrisroumantzas-glitch/five-records-owlbear@main/background.html"
+}
