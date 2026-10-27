@@ -1,21 +1,23 @@
 <!doctype html><html lang="el"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Hollow Archive — Οι Πέντε Καταγραφές</title><link rel="stylesheet" href="./styles.css"></head><body>
 <main class="app-shell"><section id="scene" class="scene phase-1"><div class="scene-canvas"><div id="whiteFlash" class="white-flash"></div><div class="vignette"></div>
-<header class="scene-title"><span>HOLLOW ARCHIVE</span><strong>ΟΙ ΠΕΝΤΕ ΚΑΤΑΓΡΑΦΕΣ</strong></header>
 <button id="fullscreenBtn" class="round fullscreen" title="Πλήρης οθόνη">⛶</button>
 
-<section id="clueStones" class="clue-stones">
-  <article class="clue-stone flame"><div class="clue-name">ΦΛΟΓΑ</div><div class="clue-text">Ανάμεσα στη Σφραγίδα και σε εμένα υπήρχε ακριβώς μία θέση, και στεκόμουν μετά από το Μάτι.</div></article>
-  <article class="clue-stone seal"><div class="clue-name">ΣΦΡΑΓΙΔΑ</div><div class="clue-text">Στεκόμουν πριν από το Μάτι.</div></article>
-  <article class="clue-stone key"><div class="clue-name">ΚΛΕΙΔΙ</div><div class="clue-text">Στεκόμουν πριν από την Πένα.</div></article>
-  <article class="clue-stone eye"><div class="clue-name">ΜΑΤΙ</div><div class="clue-text">Η θέση μου δεν ήταν ούτε η πρώτη ούτε η τελευταία.</div></article>
-  <article class="clue-stone quill"><div class="clue-name">ΠΕΝΑ</div><div class="clue-text">Η Σφραγίδα με ακολουθούσε αμέσως.</div></article>
+<section id="clueStones" class="stone-inscription" aria-label="Χαραγμένες ενδείξεις">
+  <div class="inscription-title">ΠΡΟΕΛΕΥΣΗ</div>
+  <div class="inscription-grid">
+    <p><b>ΦΛΟΓΑ</b> Ανάμεσα στη Σφραγίδα και σε εμένα υπήρχε ακριβώς μία θέση, και στεκόμουν μετά από το Μάτι.</p>
+    <p><b>ΚΛΕΙΔΙ</b> Στεκόμουν πριν από την Πένα.</p>
+    <p><b>ΜΑΤΙ</b> Η θέση μου δεν ήταν ούτε η πρώτη ούτε η τελευταία.</p>
+    <p><b>ΣΦΡΑΓΙΔΑ</b> Στεκόμουν πριν από το Μάτι.</p>
+    <p><b>ΠΕΝΑ</b> Η Σφραγίδα με ακολουθούσε αμέσως.</p>
+  </div>
   <div id="hintLine" class="hint-line hidden"></div>
 </section>
 
 <section id="phase2Message" class="phase2-message hidden">
   <div>Οι πέτρες κλειδώνουν.</div>
-  <strong>Οι αριθμοί χαράζονται πάνω τους.</strong>
-  <span>Πάτησέ τους στη σωστή σειρά.</span>
+  <strong>Αρχαίοι αριθμοί εμφανίζονται στην επιφάνειά τους.</strong>
+  <span>Η σωστή σειρά παραμένει κρυμμένη μέσα στον δείκτη.</span>
 </section>
 
 <section id="puzzleBoard" class="puzzle-board"><div id="slots" class="slots"></div></section>
