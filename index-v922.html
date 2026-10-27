@@ -1,0 +1,38 @@
+<!doctype html><html lang="el"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Hollow Archive — Οι Πέντε Καταγραφές</title><link rel="stylesheet" href="./styles-v922.css"></head><body>
+<main class="app-shell"><section id="scene" class="scene phase-1"><div class="scene-canvas"><div id="whiteFlash" class="white-flash"></div><div class="vignette"></div>
+<button id="fullscreenBtn" class="round fullscreen" title="Πλήρης οθόνη">⛶</button>
+
+<section id="clueStones" class="stone-inscription" aria-label="Χαραγμένες ενδείξεις">
+  <div class="inscription-grid">
+    <p><b>ΚΛΕΙΔΙ</b> Βρισκόμουν πριν από την Πένα.</p>
+    <p><b>ΣΦΡΑΓΙΔΑ</b> Βρισκόμουν πριν από το Μάτι.</p>
+    <p><b>ΜΑΤΙ</b> Η θέση μου δεν ήταν ούτε η πρώτη ούτε η τελευταία.</p>
+    <p><b>ΠΕΝΑ</b> Η Σφραγίδα ακολουθούσε αμέσως μετά από εμένα.</p>
+    <p class="wide"><b>ΦΛΟΓΑ</b> Ανάμεσα στη Σφραγίδα και σε εμένα υπήρχε ακριβώς μία θέση, και βρισκόμουν μετά από το Μάτι.</p>
+  </div>
+  <div id="hintLine" class="hint-line hidden"></div>
+</section>
+
+<section id="romanSockets" class="roman-sockets hidden" aria-label="Ρωμαϊκοί αριθμοί"></section>
+
+<section id="puzzleBoard" class="puzzle-board"><div id="slots" class="slots"></div></section>
+<section id="recordTray" class="record-tray"></section>
+
+<div id="status" class="status"></div>
+<div id="warning" class="warning hidden">ΤΟ HOLLOW ARCHIVE ΚΑΤΕΓΡΑΨΕ ΤΗΝ ΠΑΡΟΥΣΙΑ ΣΑΣ.</div>
+<div id="syncPill" class="sync-pill">Σύνδεση…</div>
+
+<button id="gmToggle" class="round gm hidden" title="Έλεγχοι GM">⚙</button>
+<aside id="gmDrawer" class="gm-drawer hidden">
+  <div class="gm-title">ΕΛΕΓΧΟΙ GM</div>
+  <button id="hintBtn">Εμφάνιση Υπόδειξης</button>
+  <button id="solve1Btn">Λύση 1ης Φάσης</button>
+  <button id="openBtn">Άνοιγμα Hollow Archive</button>
+  <button id="resetBtn" class="danger">Επαναφορά Γρίφου</button>
+</aside>
+
+<section id="opened" class="opened hidden">
+  <div class="door-glow"></div>
+  <div class="opened-text"><span>Η ΕΞΩΤΕΡΙΚΗ ΣΦΡΑΓΙΔΑ ΥΠΟΧΩΡΕΙ</span><strong>HOLLOW ARCHIVE</strong><em>Ό,τι ξεχάστηκε, δεν χάθηκε.</em></div>
+</section>
+</div></section></main><script type="module" src="./app-v922.js"></script></body></html>
