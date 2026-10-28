@@ -7,11 +7,11 @@ button{font:inherit}
 .scene-canvas{
   position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
   width:min(100vw,177.68vh);aspect-ratio:1672/941;
-  background:url("./assets/phase1-final.webp?v=932") center/cover no-repeat;
+  background:url("./assets/phase1-final.webp?v=940") center/cover no-repeat;
   overflow:hidden;isolation:isolate;box-shadow:0 0 60px #000
 }
-.phase-2 .scene-canvas{background-image:url("./assets/phase2-index.webp?v=932")}
-.phase-3 .scene-canvas{background-image:url("./assets/phase2.webp?v=932")}
+.phase-2 .scene-canvas{background-image:url("./assets/phase1-final.webp?v=940")}
+.phase-3 .scene-canvas{background-image:url("./assets/phase2.webp?v=940")}
 
 .flash{position:absolute;inset:0;z-index:40;background:#fff;opacity:0;pointer-events:none}
 .flash.active{animation:flash .7s ease-out}
@@ -46,11 +46,11 @@ button{font:inherit}
 }
 .card:hover{transform:translateY(-2%) scale(1.02)}
 .card-face{position:absolute;inset:0;background-size:contain;background-position:center;background-repeat:no-repeat}
-.card[data-record="KEY"] .card-face{background-image:url("./assets/key.webp?v=932")}
-.card[data-record="QUILL"] .card-face{background-image:url("./assets/quill.webp?v=932")}
-.card[data-record="SEAL"] .card-face{background-image:url("./assets/seal.webp?v=932")}
-.card[data-record="EYE"] .card-face{background-image:url("./assets/eye.webp?v=932")}
-.card[data-record="FLAME"] .card-face{background-image:url("./assets/flame.webp?v=932")}
+.card[data-record="KEY"] .card-face{background-image:url("./assets/key.webp?v=940")}
+.card[data-record="QUILL"] .card-face{background-image:url("./assets/quill.webp?v=940")}
+.card[data-record="SEAL"] .card-face{background-image:url("./assets/seal.webp?v=940")}
+.card[data-record="EYE"] .card-face{background-image:url("./assets/eye.webp?v=940")}
+.card[data-record="FLAME"] .card-face{background-image:url("./assets/flame.webp?v=940")}
 
 .phase-2 .card{cursor:pointer}
 .phase-2 .card.chosen{
@@ -81,3 +81,25 @@ button{font:inherit}
 .fullscreen-page .scene-canvas{width:min(100vw,177.68vh);height:min(100vh,56.28vw)}
 
 @keyframes flash{0%{opacity:0}12%{opacity:.95}38%{opacity:.58}100%{opacity:0}}
+/* Phase 2: transparent numerals precisely centered in the five stone sockets. */
+.roman-layer{display:none;position:absolute;inset:0;z-index:16;pointer-events:none}
+.phase-2 .roman-layer{display:block}
+.roman{
+  position:absolute;top:28.2%;transform:translate(-50%,-50%);
+  color:#a86d2a;
+  font-family:Georgia,"Times New Roman",serif;
+  font-weight:700;
+  font-size:clamp(25px,2.25vw,42px);
+  line-height:1;
+  text-shadow:
+    1px 1px 0 rgba(245,202,111,.45),
+    -1px -1px 0 rgba(50,25,8,.85),
+    0 1px 3px rgba(20,10,4,.65);
+  -webkit-text-stroke:.45px rgba(67,34,12,.72);
+}
+.roman-1{left:35.0%}
+.roman-2{left:42.4%}
+.roman-3{left:49.82%}
+.roman-4{left:57.24%}
+.roman-5{left:64.65%}
+.phase-3 .roman-layer{display:none}
