@@ -62,6 +62,6 @@ const parts=Array.from({length:9},(_,i)=>`./assets/scene/part${String(i+1).padSt
 const bg=(await Promise.all(parts.map(async u=>{const r=await fetch(u);if(!r.ok)throw new Error("Αποτυχία φόρτωσης background: "+u);return(await r.text()).trim();}))).join("");
 document.getElementById("sceneBg").style.backgroundImage=`url(data:image/webp;base64,${bg})`;
 </script>
-<script type="module" src="./app.js?v=510"></script>
+<script type="module" src="./app.js?v=511"></script>
 </body>
 </html>
