@@ -1,14 +1,14 @@
 {
   "name":"Echoes — The Weight Room",
-  "version":"6.0.1",
+  "version":"7.0.0",
   "manifest_version":1,
   "description":"Διαδραστικός περιβαλλοντικός γρίφος της Σκηνής 50 — The Weight Room.",
   "action":{
     "title":"The Weight Room",
-    "icon":"https://dimitrisroumantzas-glitch.github.io/five-records-owlbear/weight-room/icon.svg?v=601",
-    "popover":"https://dimitrisroumantzas-glitch.github.io/five-records-owlbear/weight-room/index.html?v=601",
+    "icon":"https://dimitrisroumantzas-glitch.github.io/five-records-owlbear/weight-room/icon.svg?v=700",
+    "popover":"https://dimitrisroumantzas-glitch.github.io/five-records-owlbear/weight-room/index.html?v=700",
     "height":760,
     "width":1200
   },
-  "background_url":"https://dimitrisroumantzas-glitch.github.io/five-records-owlbear/weight-room/background.html?v=601"
+  "background_url":"https://dimitrisroumantzas-glitch.github.io/five-records-owlbear/weight-room/background.html?v=700"
 }
