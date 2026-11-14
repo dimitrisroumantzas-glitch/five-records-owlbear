@@ -13,8 +13,9 @@
   <aside id="gmPanel" class="gm-panel hidden"><h2>Έλεγχος Αφηγητή</h2><label>Πραγματική πόρτα<select id="doorSelect"><option value="0">Αριστερή</option><option value="1">Μεσαία</option><option value="2">Δεξιά</option></select></label><button id="hint1">Investigation DC 12</button><button id="hint2">Investigation DC 14</button><button id="hideHint">Απόκρυψη ένδειξης</button><button id="reset" class="danger">Επαναφορά γρίφου</button><details><summary>Διαγνωστικά</summary><div id="diag"></div></details></aside>
 </main>
 <script type="module">
-const bgParts=["./bg-parts/p01.txt?v=310","./bg-parts/p02.txt?v=310","./bg-parts/p03.txt?v=310","./bg-parts/p04.txt?v=310","./bg-parts/p05.txt?v=310","./bg-parts/p06.txt?v=310","./bg-parts/p07.txt?v=310"];
-const bg=(await Promise.all(bgParts.map(async u=>{const r=await fetch(u);if(!r.ok)throw new Error(u);return r.text()}))).join("");
+const r=await fetch("./bg.txt?v=310");
+if(!r.ok) throw new Error("Weight Room background failed to load");
+const bg=(await r.text()).trim();
 document.getElementById("sceneBg").style.backgroundImage=`url(data:image/webp;base64,${bg})`;
 await import("./app.js?v=310");
 </script>
