@@ -144,10 +144,7 @@ async function boot(){
   const meta=await OBR.room.getMetadata();game=sanitize(meta[KEY]);if(isGM&&meta[KEY]?.v!==VERSION)await OBR.room.setMetadata({[KEY]:game});
   OBR.room.onMetadataChange(m=>{if(m[KEY])void apply(m[KEY],{remote:true});});
   OBR.broadcast.onMessage(CHANNEL,async event=>{
-   if(isGM&&event.data?.type==='MOVE'){
-    const places={...game.places};for(const s of STONES){const candidate=event.data.places?.[s.id];if(['floor','p0','p1','p2','p3'].includes(candidate))places[s.id]=candidate;}
-    await apply({...game,places,updated:Date.now()});
-   }else if(event.data?.type==='STATE')void apply(event.data.state,{remote:true});
+   if(event.data?.type==='STATE')void apply(event.data.state,{remote:true});
   });
   requestDraw();updateGM();
  }catch(e){console.info('Standalone preview',e);demo=true;isGM=true;$('gmButton').classList.remove('hidden');}
