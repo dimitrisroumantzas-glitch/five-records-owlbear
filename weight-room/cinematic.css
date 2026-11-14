@@ -1,0 +1,19 @@
+:root{color-scheme:dark}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#080b0b;color:#e4d8ba;font-family:Georgia,'Times New Roman',serif}
+.room-backdrop{position:fixed;inset:-5%;background:linear-gradient(90deg,#030606bb,#10171655,#030606bb),url('./assets/scene50-approved.avif') center/cover;filter:blur(28px) brightness(.37) saturate(.72);transform:scale(1.06);pointer-events:none}
+.game-shell{position:relative;display:flex;align-items:center;justify-content:center;width:100%;height:100dvh;padding:8px;overflow:hidden}
+.stage-wrap{position:relative;aspect-ratio:1/1;height:min(calc(100dvh - 16px),calc(100vw - 16px));max-width:100%;box-shadow:0 0 0 1px #a6a07820,0 18px 78px #000c;overflow:hidden;background:#0c1110}
+canvas{display:block;width:100%;height:100%;cursor:default;touch-action:none;user-select:none;-webkit-user-select:none}
+.controls{position:absolute;top:1.2%;right:1.2%;display:flex;gap:8px;z-index:20}
+.rune{width:35px;height:35px;border-radius:50%;cursor:pointer;background:linear-gradient(140deg,#33392eec,#090d0ced);border:1px solid #95835b8c;color:#d9c18b;box-shadow:inset 0 0 0 2px #151b18c0,0 3px 13px #0009;font:20px Georgia;opacity:.8;transition:opacity .15s}
+.rune:hover{opacity:1}.hidden{display:none!important}
+.scene-title{position:absolute;left:3%;top:2.7%;z-index:2;text-shadow:0 3px 10px #000;font-weight:400;pointer-events:none;animation:sceneFade 5s forwards}
+.scene-title small{display:block;letter-spacing:2.4px;font:700 10px system-ui,sans-serif;color:#d6bf8e}.scene-title span{display:block;margin-top:4px;font-size:26px}
+@keyframes sceneFade{0%,45%{opacity:.92}100%{opacity:0}}
+.status{position:absolute;left:50%;bottom:5%;z-index:12;transform:translateX(-50%);width:max-content;max-width:82%;text-align:center;font:17px/1.4 Georgia,serif;padding:12px 28px;color:#e4d5ab;background:linear-gradient(90deg,transparent,#090b0be0 12%,#0c0e0ee8 88%,transparent);border-top:1px solid #c5a77d6c;border-bottom:1px solid #c5a77d6c;text-shadow:0 2px 7px #000;pointer-events:none;animation:messageIn .35s ease}
+@keyframes messageIn{from{opacity:0;transform:translate(-50%,5px)}to{opacity:1;transform:translate(-50%,0)}}
+.gm-panel{position:absolute;z-index:30;top:6%;right:1.4%;width:245px;max-height:70%;overflow:auto;padding:14px;background:#101410f2;border:1px solid #8c7954bd;box-shadow:0 8px 30px #000b;font:12px/1.3 system-ui,sans-serif;color:#dfd6c5}
+.gm-heading{font:18px Georgia,serif;color:#dbc18b;margin-bottom:12px;display:flex;justify-content:space-between}.gm-heading small{font:11px system-ui;color:#aa946b}
+.gm-panel label{display:grid;gap:6px;margin:9px 0 12px}.gm-panel select,.gm-panel button{width:100%;padding:9px;background:#262b24;border:1px solid #675b46;color:#e5d4ae;border-radius:3px;font-size:12px;cursor:pointer}.gm-panel button{margin:3px 0 8px}.gm-panel button:hover{border-color:#c8ac78}.gm-panel .danger{color:#e4b4a9;border-color:#804e42}.gm-panel pre{white-space:pre-wrap;font:11px/1.5 monospace;color:#b8b3a5}.gm-panel details{margin-top:8px}
+@media(max-width:750px){.rune{width:32px;height:32px;font-size:18px}.gm-panel{width:210px;top:12%}.status{font-size:13px;padding:8px 14px}.scene-title span{font-size:18px}}
