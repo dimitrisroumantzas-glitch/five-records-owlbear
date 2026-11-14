@@ -1,17 +1,17 @@
 export const EXTENSION_ID="gr.echoes.weight-room";
 export const STATE_KEY=`${EXTENSION_ID}/state`;
 export const CHANNEL=`${EXTENSION_ID}/sync`;
-export const STATE_VERSION=4;
+export const STATE_VERSION=5;
 
 export const BASE_HEIGHTS=[9,8,7,6];
 export const STONES=[
-  {id:"s1",weight:1,size:46},
-  {id:"s2",weight:2,size:54},
-  {id:"s3",weight:3,size:62},
-  {id:"s4",weight:4,size:70},
-  {id:"s5",weight:5,size:78},
-  {id:"s6",weight:6,size:86},
-  {id:"s7",weight:7,size:94}
+  {id:"s1",weight:1,size:48},
+  {id:"s2",weight:2,size:56},
+  {id:"s3",weight:3,size:64},
+  {id:"s4",weight:4,size:72},
+  {id:"s5",weight:5,size:80},
+  {id:"s6",weight:6,size:88},
+  {id:"s7",weight:7,size:96}
 ];
 
 export function freshState(){
@@ -45,11 +45,7 @@ export function sanitizeState(v){
 export function pedestalLoad(state,index){
   return STONES.filter(s=>state.placements[s.id]===`p${index}`).reduce((sum,s)=>sum+s.weight,0);
 }
-
-export function finalHeight(state,index){
-  return BASE_HEIGHTS[index]-pedestalLoad(state,index);
-}
-
+export function finalHeight(state,index){return BASE_HEIGHTS[index]-pedestalLoad(state,index);}
 export function isSolved(state){
   const h=BASE_HEIGHTS.map((_,i)=>finalHeight(state,i));
   return h.every(v=>v>=1)&&h.every(v=>v===h[0]);
