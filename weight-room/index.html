@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>The Weight Room</title>
-  <link rel="stylesheet" href="./styles.css?v=601">
+  <link rel="stylesheet" href="./styles.css?v=700">
 </head>
 <body>
 <main class="game-shell">
@@ -26,11 +26,7 @@
     </section>
 
     <section id="pedestals" class="pedestals" aria-label="Τέσσερα πέτρινα βάθρα"></section>
-
-    <div class="stone-rack">
-      <div class="rack-edge"></div>
-      <section id="stoneTray" class="stone-tray" aria-label="Πέτρινα βάρη"></section>
-    </div>
+    <section id="stoneTray" class="floor-weights" aria-label="Πέτρινα βάρη"></section>
 
     <div id="hint" class="hint hidden"></div>
     <div id="success" class="success hidden"><span>Ο μηχανισμός ισορρόπησε.</span></div>
@@ -58,10 +54,14 @@
 </main>
 
 <script type="module">
-const parts=Array.from({length:9},(_,i)=>`./assets/scene/part${String(i+1).padStart(2,"0")}.txt?v=601`);
-const bg=(await Promise.all(parts.map(async u=>{const r=await fetch(u);if(!r.ok)throw new Error("Αποτυχία φόρτωσης background: "+u);return(await r.text()).trim();}))).join("");
+const parts=Array.from({length:9},(_,i)=>`./assets/scene/part${String(i+1).padStart(2,"0")}.txt?v=700`);
+const bg=(await Promise.all(parts.map(async u=>{
+  const r=await fetch(u);
+  if(!r.ok) throw new Error("Αποτυχία φόρτωσης background: "+u);
+  return (await r.text()).trim();
+}))).join("");
 document.getElementById("sceneBg").style.backgroundImage=`url(data:image/webp;base64,${bg})`;
 </script>
-<script type="module" src="./app.js?v=601"></script>
+<script type="module" src="./app.js?v=700"></script>
 </body>
 </html>
