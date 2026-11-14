@@ -4,13 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>The Weight Room</title>
-  <link rel="stylesheet" href="./styles.css?v=400">
+  <link rel="stylesheet" href="./styles.css?v=510">
 </head>
 <body>
 <main class="game-shell">
   <section id="scene" class="scene">
     <div id="sceneBg" class="scene-bg"></div>
     <div class="vignette"></div>
+    <div class="ambient-glow"></div>
     <div id="dustLayer" class="dust-layer"></div>
 
     <div id="intro" class="intro">
@@ -19,16 +20,20 @@
     </div>
 
     <section class="doors" aria-label="Τρεις πέτρινες θύρες">
-      <div class="door door-left" data-door="0"><div class="door-frame"><i class="panel l"></i><i class="panel r"></i></div></div>
-      <div class="door door-center" data-door="1"><div class="door-frame"><i class="panel l"></i><i class="panel r"></i></div></div>
-      <div class="door door-right" data-door="2"><div class="door-frame"><i class="panel l"></i><i class="panel r"></i></div></div>
+      <div class="door door-left" data-door="0"><div class="arch"><div class="seal"></div><div class="door-frame"><i class="panel l"></i><i class="panel r"></i></div></div></div>
+      <div class="door door-center" data-door="1"><div class="arch"><div class="seal"></div><div class="door-frame"><i class="panel l"></i><i class="panel r"></i></div></div></div>
+      <div class="door door-right" data-door="2"><div class="arch"><div class="seal"></div><div class="door-frame"><i class="panel l"></i><i class="panel r"></i></div></div></div>
     </section>
 
     <section id="pedestals" class="pedestals" aria-label="Τέσσερα πέτρινα βάθρα"></section>
-    <section id="stoneTray" class="stone-tray" aria-label="Πέτρινες σφαίρες"></section>
+
+    <div class="stone-rack">
+      <div class="rack-edge"></div>
+      <section id="stoneTray" class="stone-tray" aria-label="Πέτρινα βάρη"></section>
+    </div>
 
     <div id="hint" class="hint hidden"></div>
-    <div id="success" class="success hidden">Ο μηχανισμός ισορρόπησε.</div>
+    <div id="success" class="success hidden"><span>Ο μηχανισμός ισορρόπησε.</span></div>
     <div id="flash" class="flash"></div>
 
     <button id="fullscreenBtn" class="rune-control fullscreen-control" type="button" aria-label="Πλήρης οθόνη">⛶</button>
@@ -47,23 +52,16 @@
       <button id="hint2Btn">Investigation DC 14</button>
       <button id="hideHintsBtn">Απόκρυψη ένδειξης</button>
       <button id="resetBtn" class="danger">Επαναφορά γρίφου</button>
-      <details>
-        <summary>Διαγνωστικά</summary>
-        <div id="diagnostics"></div>
-      </details>
+      <details><summary>Διαγνωστικά</summary><div id="diagnostics"></div></details>
     </aside>
   </section>
 </main>
 
 <script type="module">
-const parts=Array.from({length:9},(_,i)=>`./assets/scene/part${String(i+1).padStart(2,"0")}.txt?v=400`);
-const bg=(await Promise.all(parts.map(async u=>{
-  const r=await fetch(u);
-  if(!r.ok) throw new Error("Αποτυχία φόρτωσης background: "+u);
-  return (await r.text()).trim();
-}))).join("");
+const parts=Array.from({length:9},(_,i)=>`./assets/scene/part${String(i+1).padStart(2,"0")}.txt?v=510`);
+const bg=(await Promise.all(parts.map(async u=>{const r=await fetch(u);if(!r.ok)throw new Error("Αποτυχία φόρτωσης background: "+u);return(await r.text()).trim();}))).join("");
 document.getElementById("sceneBg").style.backgroundImage=`url(data:image/webp;base64,${bg})`;
 </script>
-<script type="module" src="./app.js?v=400"></script>
+<script type="module" src="./app.js?v=510"></script>
 </body>
 </html>
