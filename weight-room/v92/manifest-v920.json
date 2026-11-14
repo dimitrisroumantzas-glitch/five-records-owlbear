@@ -1,0 +1,14 @@
+{
+  "name": "Echoes - The Weight Room",
+  "version": "9.2.0",
+  "manifest_version": 1,
+  "description": "Scene 50 with reliable Owlbear fullscreen modal and GM controls.",
+  "action": {
+    "title": "The Weight Room",
+    "icon": "https://dimitrisroumantzas-glitch.github.io/five-records-owlbear/weight-room/icon.svg",
+    "popover": "https://dimitrisroumantzas-glitch.github.io/five-records-owlbear/weight-room/v92/index.html?v=920",
+    "height": 900,
+    "width": 1200
+  },
+  "background_url": "https://dimitrisroumantzas-glitch.github.io/five-records-owlbear/weight-room/v92/background.html?v=920"
+}
