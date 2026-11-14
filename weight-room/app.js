@@ -1,5 +1,5 @@
 import OBR from "https://cdn.jsdelivr.net/npm/@owlbear-rodeo/sdk@3.1.0/+esm";
-import{CHANNEL,STATE_KEY,STATE_VERSION,BASE_HEIGHTS,STONES,freshState,sanitizeState,pedestalLoad,finalHeight,isSolved}from"./shared.js?v=600";
+import{CHANNEL,STATE_KEY,STATE_VERSION,BASE_HEIGHTS,STONES,freshState,sanitizeState,pedestalLoad,finalHeight,isSolved}from"./shared.js?v=601";
 
 const $=id=>document.getElementById(id);
 const MODAL_ID="gr.echoes.weight-room/fullscreen";
