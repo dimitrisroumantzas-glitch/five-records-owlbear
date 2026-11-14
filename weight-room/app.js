@@ -1,5 +1,5 @@
 import OBR from "https://cdn.jsdelivr.net/npm/@owlbear-rodeo/sdk@3.1.0/+esm";
-import{CHANNEL,STATE_KEY,STATE_VERSION,BASE_HEIGHTS,STONES,freshState,sanitizeState,pedestalLoad,finalHeight,isSolved}from"./shared.js?v=400";
+import{CHANNEL,STATE_KEY,STATE_VERSION,BASE_HEIGHTS,STONES,freshState,sanitizeState,pedestalLoad,finalHeight,isSolved}from"./shared.js?v=510";
 
 const $=id=>document.getElementById(id);
 const MODAL_ID="gr.echoes.weight-room/fullscreen";
@@ -169,7 +169,7 @@ function renderPedestals(){
       .sort((a,b)=>b.weight-a.weight)
       .forEach(s=>stack.appendChild(stoneElement(s,true)));
 
-    ped.append(shaft,cap,stack);
+    const baseEl=document.createElement("div");baseEl.className="pedestal-base";ped.append(baseEl,shaft,cap,stack);
     makeDropTarget(ped,`p${index}`);
     holder.appendChild(ped);
   });
@@ -282,7 +282,7 @@ async function init(){
   });
 
   OBR.broadcast.onMessage(CHANNEL,event=>{
-    if(event.data?.type==="STATE_COMMIT"){
+    if(isGM&&event.data?.type==="STATE_PROPOSE"){\n      const proposed=sanitizeState(event.data.state);\n      state=proposed;\n      selected=null;\n      await OBR.room.setMetadata({[STATE_KEY]:state});\n      await OBR.broadcast.sendMessage(CHANNEL,{type:"STATE_COMMIT",state},{destination:"ALL"});\n      render();\n      return;\n    }\n    if(event.data?.type==="STATE_COMMIT"){
       state=sanitizeState(event.data.state);
       selected=null;
       render();
