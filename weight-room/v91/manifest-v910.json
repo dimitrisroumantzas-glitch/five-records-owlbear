@@ -1,0 +1,14 @@
+{
+  "name": "Echoes - The Weight Room",
+  "version": "9.1.0",
+  "manifest_version": 1,
+  "description": "Photorealistic scene 50 puzzle: shared four sinking pedestals and non-obvious stone-weight combinations.",
+  "action": {
+    "title": "The Weight Room",
+    "icon": "https://dimitrisroumantzas-glitch.github.io/five-records-owlbear/weight-room/icon.svg",
+    "popover": "https://dimitrisroumantzas-glitch.github.io/five-records-owlbear/weight-room/v91/index.html?v=910",
+    "height": 900,
+    "width": 1200
+  },
+  "background_url": "https://dimitrisroumantzas-glitch.github.io/five-records-owlbear/weight-room/v91/background.html?v=910"
+}
