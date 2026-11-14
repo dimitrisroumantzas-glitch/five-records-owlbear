@@ -1,5 +1,5 @@
 import OBR from "https://cdn.jsdelivr.net/npm/@owlbear-rodeo/sdk@3.1.0/+esm";
-import{CHANNEL,STATE_KEY,STATE_VERSION,BASE_HEIGHTS,STONES,freshState,sanitizeState,pedestalLoad,finalHeight,isSolved}from"./shared.js?v=510";
+import{CHANNEL,STATE_KEY,STATE_VERSION,BASE_HEIGHTS,STONES,freshState,sanitizeState,pedestalLoad,finalHeight,isSolved}from"./shared.js?v=511";
 
 const $=id=>document.getElementById(id);
 const MODAL_ID="gr.echoes.weight-room/fullscreen";
@@ -282,7 +282,16 @@ async function init(){
   });
 
   OBR.broadcast.onMessage(CHANNEL,event=>{
-    if(isGM&&event.data?.type==="STATE_PROPOSE"){\n      const proposed=sanitizeState(event.data.state);\n      state=proposed;\n      selected=null;\n      await OBR.room.setMetadata({[STATE_KEY]:state});\n      await OBR.broadcast.sendMessage(CHANNEL,{type:"STATE_COMMIT",state},{destination:"ALL"});\n      render();\n      return;\n    }\n    if(event.data?.type==="STATE_COMMIT"){
+    if(isGM&&event.data?.type==="STATE_PROPOSE"){
+      const proposed=sanitizeState(event.data.state);
+      state=proposed;
+      selected=null;
+      await OBR.room.setMetadata({[STATE_KEY]:state});
+      await OBR.broadcast.sendMessage(CHANNEL,{type:"STATE_COMMIT",state},{destination:"ALL"});
+      render();
+      return;
+    }
+    if(event.data?.type==="STATE_COMMIT"){
       state=sanitizeState(event.data.state);
       selected=null;
       render();
