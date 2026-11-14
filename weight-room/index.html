@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>The Weight Room</title>
-  <link rel="stylesheet" href="./styles.css?v=510">
+  <link rel="stylesheet" href="./styles.css?v=600">
 </head>
 <body>
 <main class="game-shell">
@@ -58,10 +58,10 @@
 </main>
 
 <script type="module">
-const parts=Array.from({length:9},(_,i)=>`./assets/scene/part${String(i+1).padStart(2,"0")}.txt?v=510`);
+const parts=Array.from({length:9},(_,i)=>`./assets/scene/part${String(i+1).padStart(2,"0")}.txt?v=600`);
 const bg=(await Promise.all(parts.map(async u=>{const r=await fetch(u);if(!r.ok)throw new Error("Αποτυχία φόρτωσης background: "+u);return(await r.text()).trim();}))).join("");
 document.getElementById("sceneBg").style.backgroundImage=`url(data:image/webp;base64,${bg})`;
 </script>
-<script type="module" src="./app.js?v=511"></script>
+<script type="module" src="./app.js?v=600"></script>
 </body>
 </html>
