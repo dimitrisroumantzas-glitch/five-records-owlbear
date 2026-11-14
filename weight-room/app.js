@@ -1,5 +1,5 @@
 import OBR from "https://cdn.jsdelivr.net/npm/@owlbear-rodeo/sdk@3.1.0/+esm";
-import{CHANNEL,STATE_KEY,STATE_VERSION,BASE_HEIGHTS,STONES,freshState,sanitizeState,pedestalLoad,finalHeight,isSolved}from"./shared.js?v=601";
+import{CHANNEL,STATE_KEY,STATE_VERSION,BASE_HEIGHTS,STONES,freshState,sanitizeState,pedestalLoad,finalHeight,isSolved}from"./shared.js?v=700";
 
 const $=id=>document.getElementById(id);
 const MODAL_ID="gr.echoes.weight-room/fullscreen";
@@ -98,11 +98,11 @@ function moveStone(stoneId,zone){
 function stoneElement(stone,onPedestal=false){
   const el=document.createElement("button");
   el.type="button";
-  el.className="stone"+(selected===stone.id?" selected":"")+(onPedestal?" on-pedestal":"");
+  el.className=`stone w${stone.weight}${selected===stone.id?" selected":""}${onPedestal?" on-pedestal":""}`;
   el.style.setProperty("--size",`${stone.size}px`);
   el.dataset.stone=stone.id;
   el.draggable=true;
-  el.setAttribute("aria-label","Πέτρινη σφαίρα");
+  el.setAttribute("aria-label","Πέτρινο βάρος");
 
   el.addEventListener("dragstart",e=>{
     e.dataTransfer.setData("text/plain",stone.id);
