@@ -1,0 +1,14 @@
+{
+  "name":"Echoes — The Weight Room",
+  "version":"2.0.0",
+  "manifest_version":1,
+  "author":"Echoes of the Forgotten Age",
+  "description":"Διαδραστική σκηνή περιπέτειας για τη Σκηνή 50 — The Weight Room.",
+  "action":{
+    "title":"The Weight Room",
+    "icon":"https://dimitrisroumantzas-glitch.github.io/five-records-owlbear/weight-room/icon.svg?v=200",
+    "popover":"https://dimitrisroumantzas-glitch.github.io/five-records-owlbear/weight-room/index.html?v=200",
+    "height":800,
+    "width":1200
+  }
+}
