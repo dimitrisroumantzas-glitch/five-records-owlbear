@@ -1,14 +1,16 @@
 import OBR from "https://cdn.jsdelivr.net/npm/@owlbear-rodeo/sdk@3.1.0/+esm";
-import{CHANNEL,STATE_KEY,STATE_VERSION,BASE_HEIGHTS,STONES,freshState,sanitizeState,pedestalLoad,finalHeight,isSolved}from"./shared.js?v=511";
+import{CHANNEL,STATE_KEY,STATE_VERSION,BASE_HEIGHTS,STONES,freshState,sanitizeState,pedestalLoad,finalHeight,isSolved}from"./shared.js?v=600";
 
 const $=id=>document.getElementById(id);
 const MODAL_ID="gr.echoes.weight-room/fullscreen";
-const fullPage=new URLSearchParams(location.search).get("fullscreen")==="1";
+const params=new URLSearchParams(location.search);
+const fullPage=params.get("fullscreen")==="1";
+const forceDemo=params.get("demo")==="1";
 
 let state=freshState();
 let selected=null;
 let isGM=false;
-let demoMode=!OBR.isAvailable;
+let demoMode=forceDemo||!OBR.isAvailable;
 let lastSolved=false;
 
 if(fullPage)document.body.classList.add("fullscreen-page");
@@ -281,7 +283,7 @@ async function init(){
     }
   });
 
-  OBR.broadcast.onMessage(CHANNEL,event=>{
+  OBR.broadcast.onMessage(CHANNEL,async event=>{
     if(isGM&&event.data?.type==="STATE_PROPOSE"){
       const proposed=sanitizeState(event.data.state);
       state=proposed;
