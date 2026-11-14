@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#080c0b">
+  <title>Echoes of the Forgotten Age — The Weight Room</title>
+  <link rel="stylesheet" href="./cinematic.css?v=800">
+</head>
+<body>
+  <div class="room-backdrop" aria-hidden="true"></div>
+  <main class="game-shell">
+    <div id="stageWrap" class="stage-wrap">
+      <canvas id="stage" width="1254" height="1254" role="img" aria-label="The Weight Room. Μετακίνησε πέτρινα βάρη από το πάτωμα πάνω στα τέσσερα βάθρα."></canvas>
+      <div class="scene-title" id="sceneTitle"><small>HOLLOW ARCHIVE</small><span>THE WEIGHT ROOM</span></div>
+      <div class="status hidden" id="status" aria-live="polite"></div>
+      <div class="controls">
+        <button id="gmButton" class="rune gm hidden" title="GM Controls" aria-label="GM Controls">✧</button>
+        <button id="fullButton" class="rune" title="Full screen" aria-label="Full screen">⛶</button>
+      </div>
+      <aside id="gmPanel" class="gm-panel hidden">
+        <div class="gm-heading">The Weight Room <small>GM</small></div>
+        <label>Πραγματική πόρτα <select id="doorChoose"><option value="0">Αριστερή</option><option value="1">Κεντρική</option><option value="2">Δεξιά</option></select></label>
+        <button id="hintOne" type="button">Investigation DC 12</button>
+        <button id="hintTwo" type="button">Investigation DC 14</button>
+        <button id="reset" type="button" class="danger">Επαναφορά</button>
+        <details><summary>Στοιχεία για τον DM</summary><pre id="diagnostics"></pre></details>
+      </aside>
+    </div>
+  </main>
+  <script type="module" src="./cinematic.js?v=800"></script>
+</body>
+</html>
