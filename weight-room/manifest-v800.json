@@ -1,0 +1,14 @@
+{
+  "name": "Echoes — The Weight Room: Cinematic",
+  "version": "8.0.0",
+  "manifest_version": 1,
+  "description": "Scene 50: immersive image-native stone weight puzzle",
+  "action": {
+    "title": "The Weight Room",
+    "icon": "https://dimitrisroumantzas-glitch.github.io/five-records-owlbear/weight-room/icon.svg?v=800",
+    "popover": "https://dimitrisroumantzas-glitch.github.io/five-records-owlbear/weight-room/cinematic.html?v=800",
+    "height": 870,
+    "width": 1000
+  },
+  "background_url": "https://dimitrisroumantzas-glitch.github.io/five-records-owlbear/weight-room/cinematic-background.html?v=800"
+}
