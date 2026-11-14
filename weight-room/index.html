@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="el">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The Weight Room</title><link rel="stylesheet" href="./styles.css?v=310"></head>
+<body>
+<main id="game" class="game">
+  <div id="sceneBg" class="scene-bg"></div><div class="scene-vignette"></div><div id="dustLayer" class="dust-layer"></div>
+  <div class="intro"><span>Hollow Archive</span><strong>The Weight Room</strong></div>
+  <section id="doors" class="doors"><div class="door" data-door="0"><div class="door-inner"><i class="l"></i><i class="r"></i></div></div><div class="door" data-door="1"><div class="door-inner"><i class="l"></i><i class="r"></i></div></div><div class="door" data-door="2"><div class="door-inner"><i class="l"></i><i class="r"></i></div></div></section>
+  <section id="pedestals" class="pedestals"></section>
+  <section id="stones" class="stones"></section>
+  <div id="hint" class="hint hidden"></div><div id="success" class="success hidden">Ο μηχανισμός ισορρόπησε.</div><div id="sync" class="sync">σύνδεση…</div><div id="noScene" class="no-scene hidden">Άνοιξε πρώτα τη σκηνή στο Owlbear Rodeo.</div>
+  <button id="fullscreen" class="orb fullscreen">⛶</button><button id="gmToggle" class="orb gm hidden">✦</button>
+  <aside id="gmPanel" class="gm-panel hidden"><h2>Έλεγχος Αφηγητή</h2><label>Πραγματική πόρτα<select id="doorSelect"><option value="0">Αριστερή</option><option value="1">Μεσαία</option><option value="2">Δεξιά</option></select></label><button id="hint1">Investigation DC 12</button><button id="hint2">Investigation DC 14</button><button id="hideHint">Απόκρυψη ένδειξης</button><button id="reset" class="danger">Επαναφορά γρίφου</button><details><summary>Διαγνωστικά</summary><div id="diag"></div></details></aside>
+</main>
+<script type="module">
+const bgParts=["./bg-parts/p01.txt?v=310","./bg-parts/p02.txt?v=310","./bg-parts/p03.txt?v=310","./bg-parts/p04.txt?v=310","./bg-parts/p05.txt?v=310","./bg-parts/p06.txt?v=310","./bg-parts/p07.txt?v=310"];
+const bg=(await Promise.all(bgParts.map(async u=>{const r=await fetch(u);if(!r.ok)throw new Error(u);return r.text()}))).join("");
+document.getElementById("sceneBg").style.backgroundImage=`url(data:image/webp;base64,${bg})`;
+await import("./app.js?v=310");
+</script>
+</body></html>
