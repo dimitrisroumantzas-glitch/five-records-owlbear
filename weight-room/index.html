@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Weight Room</title>
+  <link rel="stylesheet" href="./styles.css?v=101" />
+</head>
+<body>
+  <main id="app">
+    <header class="topbar">
+      <div>
+        <div class="eyebrow">ECHOES OF THE FORGOTTEN AGE</div>
+        <h1>The Weight Room</h1>
+      </div>
+      <div id="syncBadge" class="sync-badge">φόρτωση…</div>
+    </header>
+
+    <section id="noScene" class="notice hidden">
+      Άνοιξε πρώτα τη Σκηνή 50 στο Owlbear Rodeo.
+    </section>
+
+    <section id="puzzle">
+      <div class="doors" aria-label="Τρεις πέτρινες πόρτες">
+        <div class="door" data-door="0"><div class="door-leaf left"></div><div class="door-leaf right"></div><div class="door-rune">◇</div></div>
+        <div class="door" data-door="1"><div class="door-leaf left"></div><div class="door-leaf right"></div><div class="door-rune">○</div></div>
+        <div class="door" data-door="2"><div class="door-leaf left"></div><div class="door-leaf right"></div><div class="door-rune">△</div></div>
+      </div>
+      <div id="status" class="status">Ο μηχανισμός παραμένει ακίνητος.</div>
+      <div id="hint" class="hint hidden"></div>
+      <div class="pedestals" id="pedestals"></div>
+      <section class="tray-wrap">
+        <div class="tray-title">Λίθινες σφαίρες</div>
+        <div class="tray dropzone" data-zone="tray" id="tray"></div>
+        <div class="small-help">Σύρε μια σφαίρα σε ένα βάθρο ή επίλεξέ την και μετά πάτησε το βάθρο.</div>
+      </section>
+      <section id="gmPanel" class="gm-panel hidden">
+        <div class="gm-title">Έλεγχος Αφηγητή</div>
+        <div class="gm-row"><label for="doorSelect">Πραγματική πόρτα</label><select id="doorSelect"><option value="0">Αριστερή</option><option value="1">Μεσαία</option><option value="2">Δεξιά</option></select></div>
+        <div class="gm-buttons">
+          <button id="hint1Btn">Hint — Investigation DC 12</button>
+          <button id="hint2Btn">Hint — Investigation DC 14</button>
+          <button id="hideHintsBtn" class="secondary">Απόκρυψη hints</button>
+          <button id="resetBtn" class="danger">Επαναφορά γρίφου</button>
+        </div>
+        <details><summary>Διαγνωστικά Αφηγητή</summary><div id="diagnostics" class="diagnostics"></div></details>
+      </section>
+    </section>
+    <footer>Η κατάσταση αποθηκεύεται στη συγκεκριμένη σκηνή και συγχρονίζεται στους παίκτες.</footer>
+  </main>
+  <script type="module" src="./app.js?v=101"></script>
+</body>
+</html>
