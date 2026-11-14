@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="el">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#080c0b"><title>The Weight Room | Echoes of the Forgotten Age</title><link rel="stylesheet" href="./style.css?v=900"></head>
+<body>
+<div class="ambient" aria-hidden="true"></div>
+<main class="viewport"><section class="frame" id="frame">
+<canvas id="stage" width="1254" height="1254" aria-label="The Weight Room interactive puzzle with four pedestals and seven weights"></canvas>
+<div class="chapter">HOLLOW ARCHIVE <span>THE WEIGHT ROOM</span></div>
+<div class="top-controls"><button id="gmToggle" class="rune hidden" title="GM Controls" aria-label="GM controls">✦</button><button id="full" class="rune" title="Fullscreen" aria-label="Fullscreen">⛶</button></div>
+<div class="status hidden" id="status" aria-live="polite"></div>
+<div id="loading" class="loading">Το δωμάτιο ξυπνά…</div>
+<aside id="gmPanel" class="gm-panel hidden"><div class="gm-head"><strong>The Weight Room</strong><small>DM ONLY</small></div><label>Πραγματική θύρα<select id="door"><option value="0">Αριστερή</option><option value="1">Μεσαία</option><option value="2">Δεξιά</option></select></label><button id="hint1">Investigation DC 12</button><button id="hint2">Investigation DC 14</button><button id="reset">Επαναφορά μηχανισμού</button><details><summary>Διαγνωστικά / λύση</summary><pre id="diagnostics"></pre></details></aside>
+</section></main>
+<script type="module" src="./game.js?v=900"></script>
+</body></html>

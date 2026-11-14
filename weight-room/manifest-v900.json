@@ -1,0 +1,13 @@
+{
+  "name": "Echoes - The Weight Room",
+  "version": "9.0.0",
+  "manifest_version": 1,
+  "description": "Photographic interactive stone-weight puzzle for Scene 50.",
+  "action": {
+    "title": "The Weight Room",
+    "icon": "https://dimitrisroumantzas-glitch.github.io/five-records-owlbear/weight-room/icon.svg",
+    "popover": "https://dimitrisroumantzas-glitch.github.io/five-records-owlbear/weight-room/v9/index.html?v=900",
+    "height": 900,
+    "width": 1050
+  }
+}
